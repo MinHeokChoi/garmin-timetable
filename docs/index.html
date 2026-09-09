@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>시간표 넣기 · Garmin Timetable</title>
+<link rel="stylesheet" href="style.css">
+
+<h1>시간표를 시계에 넣기</h1>
+
+<div class="lead">
+  <button id="copyPrompt" class="btn primary">프롬프트 복사</button>
+  <p>챗봇에 <b>시간표 사진과 함께</b> 붙여넣고, 나온 결과를 아래에 붙여넣으세요.
+    <a href="#" id="showPrompt" class="lnk">프롬프트 보기</a></p>
+</div>
+
+<pre id="prompt" class="prompt" hidden>불러오는 중…</pre>
+
+<textarea id="paste" rows="5" placeholder="월: 09:00-09:50,운영체제,T0503;10:00-11:50,데이터베이스 시스템,B201&#10;화: …"></textarea>
+
+<div id="result" hidden>
+  <div class="card">
+    <div class="cardhead">
+      <b>Garmin Connect → Timetable → 설정 → 한 번에 입력</b>
+      <span id="len" class="len"></span>
+    </div>
+    <code id="week" class="val"></code>
+    <button id="copyWeek" class="btn primary wide">복사</button>
+  </div>
+  <div id="notice" class="notice"></div>
+</div>
+
+<details class="fold" id="editor">
+  <summary>확인하고 고치기 <span id="editBadge" class="badge"></span></summary>
+
+  <div id="tabs" class="tabs"></div>
+  <div class="edit">
+    <div class="table">
+      <div id="rows"></div>
+      <button id="add" class="btn ghost wide">+ 수업 추가</button>
+    </div>
+    <div class="side">
+      <div class="watch"><div id="preview" class="screen"></div></div>
+      <p class="cap">시계에서 보이는 모습 (근사)</p>
+    </div>
+  </div>
+
+  <details class="fold sub">
+    <summary>요일별로 나눠 넣기</summary>
+    <p class="hint">전체 칸이 길어서 안 들어갈 때만. <span class="dim">전체 칸을 비워야 적용됩니다.</span></p>
+    <div id="out" class="out"></div>
+  </details>
+
+  <button id="clear" class="btn ghost">전부 지우기</button>
+</details>
+
+<footer>
+  <p><b>과목명이 한글이면 시계 언어도 한국어여야 합니다.</b> 시계 → 설정 → 시스템 → 언어</p>
+  <p class="dim">입력한 내용은 어디에도 전송되지 않습니다.</p>
+</footer>
+
+<script src="app.js"></script>

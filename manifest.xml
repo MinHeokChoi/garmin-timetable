@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<iq:manifest xmlns:iq="http://www.garmin.com/xml/connectiq" version="3">
+    <iq:application
+        id="7ac8eefa-266d-4f71-bf1c-ced4bddfa027"
+        type="watch-app"
+        name="@Strings.AppName"
+        entry="TimetableApp"
+        launcherIcon="@Drawables.LauncherIcon"
+        minApiLevel="3.2.0">
+
+        <iq:products>
+            <iq:product id="fr255"/>
+            <iq:product id="fr255m"/>
+            <iq:product id="fr955"/>
+            <iq:product id="fr255s"/>
+            <iq:product id="fr255sm"/>
+            <iq:product id="fr165"/>
+            <iq:product id="fr165m"/>
+            <iq:product id="fr170"/>
+            <iq:product id="fr170m"/>
+            <iq:product id="fr57042mm"/>
+            <iq:product id="fr70"/>
+            <iq:product id="vivoactive5"/>
+            <iq:product id="vivoactive6"/>
+            <iq:product id="venu3s"/>
+            <iq:product id="venu441mm"/>
+            <iq:product id="venu"/>
+            <iq:product id="venud"/>
+        </iq:products>
+
+        <iq:permissions/>
+
+        <iq:languages>
+            <iq:language>kor</iq:language>
+            <iq:language>eng</iq:language>
+        </iq:languages>
+
+        <iq:barrels/>
+    </iq:application>
+</iq:manifest>

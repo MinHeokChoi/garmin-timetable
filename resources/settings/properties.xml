@@ -1,0 +1,12 @@
+<properties>
+    <!-- 비어 있으면 그 요일은 일정 없음 -->
+    <!-- 일주일 전체를 한 칸에. 채워져 있으면 아래 요일 칸보다 우선한다 -->
+    <property id="Week" type="string"></property>
+    <property id="Mon" type="string"></property>
+    <property id="Tue" type="string"></property>
+    <property id="Wed" type="string"></property>
+    <property id="Thu" type="string"></property>
+    <property id="Fri" type="string"></property>
+    <property id="Sat" type="string"></property>
+    <property id="Sun" type="string"></property>
+</properties>

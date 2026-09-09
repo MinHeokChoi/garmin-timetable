@@ -1,0 +1,34 @@
+<settings>
+    <setting propertyKey="@Properties.Week" title="@Strings.SettingWeek" prompt="@Strings.SettingWeekHint"
+             helpUrl="https://minheokchoi.github.io/garmin-timetable/">
+        <settingConfig type="alphaNumeric" maxLength="1200" />
+    </setting>
+    <setting propertyKey="@Properties.Mon" title="@Strings.SettingMon" prompt="@Strings.SettingHint"
+             helpUrl="https://minheokchoi.github.io/garmin-timetable/">
+        <settingConfig type="alphaNumeric" maxLength="300" />
+    </setting>
+    <setting propertyKey="@Properties.Tue" title="@Strings.SettingTue" prompt="@Strings.SettingHint"
+             helpUrl="https://minheokchoi.github.io/garmin-timetable/">
+        <settingConfig type="alphaNumeric" maxLength="300" />
+    </setting>
+    <setting propertyKey="@Properties.Wed" title="@Strings.SettingWed" prompt="@Strings.SettingHint"
+             helpUrl="https://minheokchoi.github.io/garmin-timetable/">
+        <settingConfig type="alphaNumeric" maxLength="300" />
+    </setting>
+    <setting propertyKey="@Properties.Thu" title="@Strings.SettingThu" prompt="@Strings.SettingHint"
+             helpUrl="https://minheokchoi.github.io/garmin-timetable/">
+        <settingConfig type="alphaNumeric" maxLength="300" />
+    </setting>
+    <setting propertyKey="@Properties.Fri" title="@Strings.SettingFri" prompt="@Strings.SettingHint"
+             helpUrl="https://minheokchoi.github.io/garmin-timetable/">
+        <settingConfig type="alphaNumeric" maxLength="300" />
+    </setting>
+    <setting propertyKey="@Properties.Sat" title="@Strings.SettingSat" prompt="@Strings.SettingHint"
+             helpUrl="https://minheokchoi.github.io/garmin-timetable/">
+        <settingConfig type="alphaNumeric" maxLength="300" />
+    </setting>
+    <setting propertyKey="@Properties.Sun" title="@Strings.SettingSun" prompt="@Strings.SettingHint"
+             helpUrl="https://minheokchoi.github.io/garmin-timetable/">
+        <settingConfig type="alphaNumeric" maxLength="300" />
+    </setting>
+</settings>

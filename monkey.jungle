@@ -1,0 +1,5 @@
+project.manifest = manifest.xml
+
+# 소스 경로를 명시해 둔다. 이 폴더 안에 다른 Connect IQ 프로젝트가 들어오면
+# 지정하지 않은 경우 그쪽 source 까지 끌려와 심볼이 충돌한다.
+base.sourcePath = source

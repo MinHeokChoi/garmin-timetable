@@ -1,0 +1,4 @@
+<drawables>
+    <!-- SVG 를 쓰면 기기별 크기(40/54/56/60/70)를 하나로 처리할 수 있다 -->
+    <bitmap id="LauncherIcon" filename="launcher_icon.svg" dithering="none" />
+</drawables>

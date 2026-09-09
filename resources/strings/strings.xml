@@ -1,0 +1,18 @@
+<strings>
+    <string id="AppName">Timetable</string>
+    <string id="SettingWeek">한 번에 입력 (전체)</string>
+    <string id="SettingWeekHint">월:09:00-09:50,근로,문헌관|화:11:00-12:50,생물학,K502</string>
+    <string id="SettingMon">월요일</string>
+    <string id="SettingTue">화요일</string>
+    <string id="SettingWed">수요일</string>
+    <string id="SettingThu">목요일</string>
+    <string id="SettingFri">금요일</string>
+    <string id="SettingSat">토요일</string>
+    <string id="SettingSun">일요일</string>
+    <string id="SettingHint">09:00-09:50,과목,강의실;10:00-11:50,과목2,강의실2</string>
+    <string id="SetupTitle">시간표 없음</string>
+    <string id="SetupHint">Garmin Connect 앱</string>
+    <string id="SetupHint2">설정에서 입력</string>
+    <!-- 요약(glance)은 본체와 다른 스코프라 별도 선언이 필요하다 -->
+    <string id="SetupTitleGlance" scope="glance">시간표 없음</string>
+</strings>
