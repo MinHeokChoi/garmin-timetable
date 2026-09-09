@@ -9,12 +9,14 @@ class TimetableView extends WatchUi.View {
     hidden var mBlocks;
     hidden var mIndex;      // 0 .. mBlocks.size()  (마지막 값 = 종료 화면)
     hidden var mConfigured;
+    hidden var mShowQr;     // 온보딩 화면에서 QR 을 보고 있는가
     hidden var mTimer;
 
     function initialize() {
         View.initialize();
         mBlocks = [];
         mConfigured = false;
+        mShowQr = false;
         mIndex = 0;
     }
 
@@ -43,6 +45,7 @@ class TimetableView extends WatchUi.View {
     // --- 버튼 동작 -------------------------------------------------------
 
     function next() {
+        if (!mConfigured) { mShowQr = true; WatchUi.requestUpdate(); return; }
         if (mIndex < mBlocks.size()) {
             mIndex++;
             WatchUi.requestUpdate();
@@ -50,6 +53,7 @@ class TimetableView extends WatchUi.View {
     }
 
     function prev() {
+        if (!mConfigured) { mShowQr = false; WatchUi.requestUpdate(); return; }
         if (mIndex > 0) {
             mIndex--;
             WatchUi.requestUpdate();
@@ -63,6 +67,7 @@ class TimetableView extends WatchUi.View {
     function reload() {
         mConfigured = Timetable.isConfigured();
         mBlocks = Schedule.today();
+        mShowQr = false;
         reset();
     }
 
@@ -79,7 +84,7 @@ class TimetableView extends WatchUi.View {
         dc.clear();
 
         if (!mConfigured) {
-            drawSetup(dc);
+            if (mShowQr) { Qr.draw(dc); } else { drawSetup(dc); }
         } else if (mIndex >= mBlocks.size()) {
             drawDone(dc);
         } else {
@@ -104,7 +109,8 @@ class TimetableView extends WatchUi.View {
         var titleH = dc.getFontHeight(titleFont);
         var hintH = dc.getFontHeight(hintFont);
 
-        var total = titleH + Theme.GAP_TITLE + hintH * 2;
+        var qr = WatchUi.loadResource(Rez.Strings.SetupQr);
+        var total = titleH + Theme.GAP_TITLE + hintH * 3 + Theme.GAP_TIME;
         var y = cy - total / 2;
 
         Theme.drawLine(dc, y + titleH / 2, titleFont, Theme.TEXT_PRIMARY, title);
@@ -112,6 +118,8 @@ class TimetableView extends WatchUi.View {
         Theme.drawLine(dc, y + hintH / 2, hintFont, Theme.TEXT_SECONDARY, l1);
         y += hintH;
         Theme.drawLine(dc, y + hintH / 2, hintFont, Theme.TEXT_SECONDARY, l2);
+        y += hintH + Theme.GAP_TIME;
+        Theme.drawLine(dc, y + hintH / 2, hintFont, Theme.ACCENT_NEXT, qr);
     }
 
     //! 오늘 볼 일정이 더 없을 때.

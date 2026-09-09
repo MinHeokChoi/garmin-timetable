@@ -174,4 +174,20 @@ SVG를 고치면 `tools/render_icon.py` 의 `BARS` 도 같이 고쳐야 한다.
 | START | 현재 시각으로 복귀 |
 | BACK | 종료 |
 
+시간표가 없을 때(온보딩 화면)는 `DOWN` 이 입력 도구 주소의 QR 을 띄우고 `UP` 이 되돌린다.
+
+## QR 다시 만들기
+
+`source/Qr.mc` 의 모듈 배열은 주소가 바뀔 때만 다시 만든다.
+브라우저에서 qrcode-generator 로 뽑는다 — 별도 설치가 필요 없다.
+
+```js
+const q = qrcode(0, 'L');
+q.addData('https://minheokchoi.github.io/garmin-timetable/');
+q.make();
+// q.getModuleCount() 와 q.isDark(r, c) 로 배열을 만든다
+```
+
+오류정정 `L` 을 쓴다. 화면은 훼손될 일이 없고, L 이어야 29모듈에 담긴다.
+
 학식 앱은 별도 프로젝트 `~/Developer/projects/hongik-cafeteria/` 에 있다.

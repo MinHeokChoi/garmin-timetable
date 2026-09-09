@@ -25,13 +25,13 @@ watch face, without opening the app at all.
 
 ■ Entering your timetable
 
-Garmin Connect app -> this app's settings, one field per day (all 7 days).
+Garmin Connect app → this app's settings, one field per day (all 7 days).
 
 Separate classes with a semicolon (;).
 
   09:00-09:50,Operating Systems,T0503;10:00-11:50,Databases,B201
 
-  -> 09:00-09:50  Operating Systems  T0503
+  → 09:00-09:50  Operating Systems  T0503
     10:00-11:50  Databases          B201
 
 Each class is [time],[name],[room], separated by commas.
@@ -53,7 +53,7 @@ Leave a day empty if you have no classes.
 
 Long names fold onto two lines. The split happens at a space:
 
-  Operating Systems  ->  Operating
+  Operating Systems  →  Operating
                          Systems
 
 Without a space the name is split in the middle, so add one where it reads best.
@@ -62,7 +62,7 @@ Without a space the name is split in the middle, so add one where it reads best.
 ■ Notes
 
 · To use non-Latin class names, the watch language must be set to that
-  language (Settings -> System -> Language). Connect IQ apps use the
+  language (Settings → System → Language). Connect IQ apps use the
   watch's own fonts.
 · Classes crossing midnight are not supported.
 · vívoactive 4 / Venu / Venu (Mercedes-Benz) do not support glances.
