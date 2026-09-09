@@ -2,7 +2,7 @@
 
 ## App name
 ```
-Timetable
+Next Class
 ```
 
 ## Tagline

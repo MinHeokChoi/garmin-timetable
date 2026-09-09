@@ -15,13 +15,13 @@ Garmin Connect 앱에 로그인한 그 계정이다.
 
 업로드하면 이름을 바로 정해야 하니 미리 확인한다.
 
-https://apps.garmin.com 에서 `Timetable` 을 검색한다.
+앱 이름은 **`Next Class`** 로 정했다.
 
-- **같은 이름이 없다** → 그대로 간다
-- **있다** → 겹치지 않게 바꾼다. 예: `Class Timetable`, `Campus Timetable`
+`timetable` 로 검색하면 995개가 나온다 — 그 단어로는 순위를 못 잡는다.
+대신 설명에 timetable, 시간표, class, schedule 을 넣어 뒀다.
+Connect IQ 검색은 **제목뿐 아니라 설명도 걸린다.**
 
-이름을 바꾸기로 했다면 코드도 같이 고쳐야 한다. 두 파일의 `AppName` 을 바꾸고
-다시 빌드하면 된다. 말해주면 내가 처리한다.
+이름을 또 바꾸려면 아래 두 파일의 `AppName` 을 고치고 다시 빌드한다.
 
 ```
 resources/strings/strings.xml       (한국어)
@@ -111,7 +111,7 @@ store/screenshots/  (260×260, 6장)
 
 1. 시계에서 Connect IQ Store 로 앱을 설치한다
    (지금 사이드로드된 버전은 지워도 되고 그냥 둬도 된다)
-2. Garmin Connect 앱 → 이 앱 → 설정 → 요일별 시간표를 붙여넣는다
+2. Garmin Connect 앱 → Next Class → 설정 → 요일별 시간표를 붙여넣는다
 3. 붙여넣을 문자열은 이 명령으로 뽑는다
 
 ```bash

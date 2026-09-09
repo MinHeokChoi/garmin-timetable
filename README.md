@@ -1,4 +1,6 @@
-# Garmin Timetable
+# Next Class
+
+> Garmin 시계용 시간표 앱
 
 Garmin 시계에서 지금·다음 수업을 확인하는 앱.
 

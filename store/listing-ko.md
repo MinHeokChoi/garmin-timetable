@@ -2,7 +2,7 @@
 
 ## 앱 이름
 ```
-Timetable
+Next Class
 ```
 
 ## 한 줄 소개

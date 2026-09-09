@@ -1,5 +1,5 @@
 <strings>
-    <string id="AppName">Timetable</string>
+    <string id="AppName">Next Class</string>
     <string id="SettingWeek">All week at once</string>
     <string id="SettingWeekHint">Mon:09:00-09:50,Class,Room|Tue:11:00-12:50,Class,Room</string>
     <string id="SettingMon">Monday</string>

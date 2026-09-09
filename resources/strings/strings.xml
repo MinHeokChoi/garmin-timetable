@@ -1,5 +1,5 @@
 <strings>
-    <string id="AppName">Timetable</string>
+    <string id="AppName">Next Class</string>
     <string id="SettingWeek">한 번에 입력 (전체)</string>
     <string id="SettingWeekHint">월:09:00-09:50,근로,문헌관|화:11:00-12:50,생물학,K502</string>
     <string id="SettingMon">월요일</string>

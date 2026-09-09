@@ -23,9 +23,9 @@ https://developer.garmin.com/connect-iq/ 에서 Garmin 계정으로 로그인.
 
 ## 3. 사람이 정해야 하는 것
 
-**앱 이름** — 지금은 `Timetable`. Store에 같은 이름이 이미 있을 수 있으니
-검색해 보고 겹치면 바꾼다. 바꾸면 `resources/strings/strings.xml` 과
-`resources-eng/strings/strings.xml` 의 `AppName` 을 고치고 다시 빌드한다.
+**앱 이름** — `Next Class` 로 정했다. `Timetable` 은 이미 있어서 피했다.
+바꾸려면 `resources/strings/strings.xml` 과 `resources-eng/strings/strings.xml` 의
+`AppName` 을 고치고 다시 빌드한다.
 
 **카테고리** — Connect IQ 카테고리 중 하나를 고른다. `Productivity` 계열이 맞다.
 
@@ -42,7 +42,7 @@ https://developer.garmin.com/connect-iq/ 에서 Garmin 계정으로 로그인.
 ## 5. 승인된 뒤
 
 1. Store 에서 앱을 설치한다 (지금 시계에 사이드로드된 버전은 지워도 된다)
-2. Garmin Connect 앱 → Timetable → 설정에서 요일별 시간표를 붙여넣는다
+2. Garmin Connect 앱 → Next Class → 설정에서 요일별 시간표를 붙여넣는다
 3. 붙여넣을 문자열은 이 명령으로 뽑는다
 
 ```bash
