@@ -68,6 +68,21 @@ Without a space the name is split in the middle, so add one where it reads best.
 · Some devices do not support glances. The app itself works normally on them.
 ```
 
+## What's New
+
+### 1.0.1
+
+```
+· Many more devices supported — 107 in total, including Forerunner, Venu,
+  vívoactive and fenix
+· More forgiving timetable input. Line breaks and day labels such as "Mon:"
+  are now accepted
+· A clear "Check format" message when the timetable cannot be read. It used
+  to only say "No classes today"
+· Class times are no longer cut off in the glance
+· Larger text on square screens such as Venu Sq
+```
+
 ## Buttons
 ```
 Up     previous class
