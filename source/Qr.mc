@@ -59,8 +59,9 @@ module Qr {
         var h = dc.getHeight();
         var side = (w < h) ? w : h;
 
-        // 내접 정사각형 = 지름 / 루트2. 정수 연산으로 근사한다 (99/140).
-        var box = (side * 99) / 140;
+        // 원형은 내접 정사각형 안에 넣어야 모서리가 안 잘린다 (지름/루트2 ≈ 99/140).
+        // 사각 화면은 그 제약이 없으니 짧은 변을 거의 다 쓴다. 모듈이 커져 잘 읽힌다.
+        var box = Theme.isRound() ? (side * 99) / 140 : (side * 92) / 100;
         var quiet = 3;
         var unit = box / (SIZE + quiet * 2);
         if (unit < 1) { unit = 1; }

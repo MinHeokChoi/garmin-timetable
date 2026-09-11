@@ -1,5 +1,6 @@
 using Toybox.Graphics;
 using Toybox.Math;
+using Toybox.System;
 
 //! 디자인 시스템.
 //!
@@ -53,12 +54,31 @@ module Theme {
     const GAP_TITLE     = 10;   // 과목명 -> 시간
     const GAP_TIME      = 6;    // 시간 -> 강의실
 
-    //! 원형 화면에서 세로 위치 y 에 실제로 글자를 놓을 수 있는 가로 폭.
+    //! 화면 모양을 한 번만 읽어 둔다. 그리기마다 조회할 이유가 없다.
+    var mShape = null;
+
+    function isRound() {
+        if (mShape == null) {
+            try {
+                mShape = System.getDeviceSettings().screenShape;
+            } catch (e) {
+                mShape = System.SCREEN_SHAPE_ROUND;   // 모르면 좁은 쪽으로 가정한다
+            }
+        }
+        return mShape != System.SCREEN_SHAPE_RECTANGLE;
+    }
+
+    //! 세로 위치 y 에 실제로 글자를 놓을 수 있는 가로 폭.
     //!
-    //! 사각 화면이면 그냥 화면 폭이지만, 원형은 위아래로 갈수록 좁아진다.
+    //! 사각 화면은 어느 높이에서나 화면 폭이지만, 원형은 위아래로 갈수록 좁아진다.
     //! 반지름 r 인 원에서 중심으로부터 dy 만큼 떨어진 가로선의 길이는
     //! 2 * sqrt(r^2 - dy^2) 이다. 여기서 좌우 여백을 뺀다.
+    //!
+    //! 반원형·반8각형은 원으로 친다. 실제보다 좁게 잡을 뿐 넘치지는 않는다.
     function usableWidth(dc, y) {
+        if (!isRound()) {
+            return dc.getWidth() - 2 * EDGE_INSET;
+        }
         var r = dc.getWidth() / 2.0;
         var dy = y - dc.getHeight() / 2.0;
         var inner = r * r - dy * dy;

@@ -65,11 +65,8 @@ class TimetableGlanceView extends WatchUi.GlanceView {
         var labelColor = isNow ? Theme.ACCENT_NOW : Theme.ACCENT_NEXT;
 
         var title = block[Schedule.TITLE];
-        var detail = block[Schedule.START] + "-" + block[Schedule.END];
+        var time = block[Schedule.START] + "-" + block[Schedule.END];
         var place = block[Schedule.PLACE];
-        if (!place.equals("")) {
-            detail = detail + "  " + place;
-        }
 
         // 요약은 세로가 좁다. 세 줄이 안 들어가면 상태 줄을 버리고 두 줄로 간다.
         var labelH  = dc.getFontHeight(Graphics.FONT_XTINY);
@@ -104,8 +101,18 @@ class TimetableGlanceView extends WatchUi.GlanceView {
         dc.drawText(0, y, titleFont, title, Graphics.TEXT_JUSTIFY_LEFT);
         y += titleH;
 
-        // 시간+강의실도 넘칠 수 있다. 강의실 이름이 길면 오른쪽이 잘린다.
+        // 시간과 강의실이 같이 안 들어가면 강의실을 버린다.
+        // 시각이 잘려 "09:48-10:3.." 이 되면 언제 끝나는지를 알 수 없다.
+        // 강의실은 앱을 열면 보이지만, 끝나는 시각은 요약에서 봐야 의미가 있다.
+        var detail = time;
+        if (!place.equals("")) {
+            var both = time + "  " + place;
+            if (dc.getTextWidthInPixels(both, Graphics.FONT_XTINY) <= avail) {
+                detail = both;
+            }
+        }
         detail = Theme.ellipsize(dc, detail, avail, Graphics.FONT_XTINY);
+
         dc.setColor(Theme.TEXT_SECONDARY, Graphics.COLOR_TRANSPARENT);
         dc.drawText(0, y, Graphics.FONT_XTINY, detail, Graphics.TEXT_JUSTIFY_LEFT);
     }

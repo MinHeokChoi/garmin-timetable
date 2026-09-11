@@ -67,7 +67,7 @@ python3 tools/to_settings.py data/timetable.draft.json
 
 ## 지원 기기
 
-원형 화면 **102종**. 계열별로는 이렇다.
+**107종.** 계열별로는 이렇다.
 
 | 화면 계열 | 기기 수 |
 |---|---|
@@ -79,11 +79,19 @@ python3 tools/to_settings.py data/timetable.draft.json
 | round-280x280 | 9 |
 | round-218x218 | 5 |
 | round-360x360 | 2 |
+| rectangle-240x240 | 2 |
+| rectangle-320x360 | 2 |
 | round-466x466 | 1 |
 | round-208x208 | 1 |
+| rectangle-448x486 | 1 |
 
-원형 계열만 넣는다. 사각형·반8각형(Instinct) 기기는 `Theme.usableWidth()` 가
-원을 전제하고 계산하므로 글자가 필요 이상으로 작아진다. 넣으려면 그 계산부터 고쳐야 한다.
+원형과 사각형을 모두 지원한다. `Theme.isRound()` 가 `System.getDeviceSettings().screenShape`
+를 한 번 읽어 두고, 가용 폭 계산과 QR 크기를 거기에 맞춘다.
+반원형·반8각형은 원으로 쳐서 좁게 잡는다 — 넘치지는 않는다.
+
+**Instinct(반8각형)와 Edge(자전거 컴퓨터)는 넣지 않았다.**
+Instinct 는 176x176 에 보조 화면이 따로 있어 레이아웃을 다시 짜야 하고,
+QR 도 모듈당 3.5px 이라 스캔이 어렵다. Edge 는 손목에 차는 물건이 아니다.
 
 구형 20종(fenix 3/5, vívoactive 3, fr645, fr935 등)은 `minApiLevel 3.2.0` 을
 만족하지 못해 빠졌다.
