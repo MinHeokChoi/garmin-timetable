@@ -174,19 +174,32 @@ function warn(msg, kind) {
 // --- 붙여넣은 결과 읽기 -----------------------------------------------------
 
 // "월: ..." 형태 7줄, 또는 한 요일 문자열만 들어와도 받는다.
-function importText(text) {
+function importText(raw) {
+  // 챗봇은 두 가지 형태로 준다 — 줄바꿈으로 나뉜 확인용, 파이프로 이어진 복사용.
+  // 어느 쪽을 붙여넣어도 읽혀야 한다. 파이프를 줄바꿈으로 바꾸면 같은 문제가 된다.
+  // [확인용] [복사용] 같은 머리말은 요일 표시가 없어서 자연히 무시된다.
+  const text = String(raw).replace(/\|/g, '\n');
+
   const map = {}; DAYS.forEach(d => map[d.ko] = d.key);
   let hit = 0, problems = [], firstBad = null;
+
+  // 요일 표시가 있는 붙여넣기는 주 전체를 교체한다.
+  // 있는 요일만 덮어쓰면, 고친 시간표를 다시 넣었을 때 빠진 요일이
+  // 옛날 값으로 남는다. 사용자는 지운 줄 알지만 시계엔 그대로 뜬다.
+  const parsed = {};
   text.split('\n').forEach(line => {
     const m = line.match(/^\s*([월화수목금토일])\s*(?:요일)?\s*[:：]\s*(.*)$/);
     if (!m) return;
     const key = map[m[1]];
     const { items, bad } = parseDay(m[2]);
-    state[key] = items; hit++;
+    parsed[key] = items; hit++;
     if (bad.length && !firstBad) firstBad = key;
     if (!firstBad && items.some(unsure)) firstBad = key;
     bad.forEach(([raw, why]) => problems.push(`${m[1]}요일 · ${esc(raw)} — ${why}`));
   });
+  if (hit) {
+    DAYS.forEach(d => state[d.key] = parsed[d.key] || []);
+  }
   if (!hit) {
     const { items, bad } = parseDay(text);
     if (items.length) {
