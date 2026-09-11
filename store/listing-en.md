@@ -65,8 +65,7 @@ Without a space the name is split in the middle, so add one where it reads best.
   language (Settings → System → Language). Connect IQ apps use the
   watch's own fonts.
 · Classes crossing midnight are not supported.
-· vívoactive 4 / Venu / Venu (Mercedes-Benz) do not support glances.
-  The app itself works normally on them.
+· Some devices do not support glances. The app itself works normally on them.
 ```
 
 ## Buttons

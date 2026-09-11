@@ -27,21 +27,54 @@ module Timetable {
 
     //! 해당 요일의 블록 배열. 설정이 없거나 못 읽으면 빈 배열.
     //!
-    //! "한 번에 입력" 칸이 채워져 있으면 그쪽이 이긴다. 폰에서 요일마다
-    //! 붙여넣는 게 번거로워서 한 칸으로 끝낼 수 있게 둔 경로다.
+    //! 어느 칸에 무엇을 넣든 최대한 읽어낸다. 사용자는 챗봇이 준 결과를
+    //! 그대로 붙여넣는다 — 요일 표시가 붙어 있을 수도, 줄바꿈으로 나뉘어
+    //! 있을 수도 있다. 형식을 강요하면 조용히 "일정 없음" 만 뜨고
+    //! 무엇이 틀렸는지 알 길이 없다.
     function forDay(dayOfWeek) {
         var week = readProperty("Week");
-        if (week != null) {
+        if (week != null && hasDayMarker(week)) {
             return parseWeek(week, dayOfWeek);
         }
+
         var text = rawFor(dayOfWeek);
-        return (text == null) ? [] : parseDay(text);
+        if (text == null) { return []; }
+
+        // 요일 칸에 요일 표시가 붙은 채로 들어올 수 있다. 그때도 읽어낸다.
+        if (hasDayMarker(text)) { return parseWeek(text, dayOfWeek); }
+        return parseDay(text);
+    }
+
+    //! 요일 표시(월: / Mon:)가 들어 있는가.
+    function hasDayMarker(text) {
+        var ko = [ "일", "월", "화", "수", "목", "금", "토" ];
+        for (var i = 0; i < ko.size(); i++) {
+            if (text.find(ko[i] + ":") != null) { return true; }
+        }
+        for (var j = 0; j < KEYS.size(); j++) {
+            if (text.find(KEYS[j] + ":") != null) { return true; }
+        }
+        return false;
+    }
+
+    //! 어느 요일이든 읽어낸 수업이 하나라도 있는가.
+    //!
+    //! 설정은 들어 있는데 한 줄도 못 읽었다면 형식이 틀린 것이다.
+    //! 그 경우와 "오늘만 수업이 없는 날" 을 화면에서 구분하기 위해 쓴다.
+    function anyParsed() {
+        for (var dow = 1; dow <= 7; dow++) {
+            if (forDay(dow).size() > 0) { return true; }
+        }
+        return false;
     }
 
     //! "월:09:00-09:50,근로|화:11:00-12:50,생물학" 에서 해당 요일만 꺼낸다.
     //! 요일 표시는 한글 한 글자와 영문 세 글자를 모두 받는다.
+    //!
+    //! 요일 구분자는 파이프와 줄바꿈을 모두 받는다. 챗봇이 주는 형태가
+    //! 둘 중 무엇일지 사용자가 알 이유가 없다.
     function parseWeek(text, dayOfWeek) {
-        var chunks = splitOn(text, "|");
+        var chunks = splitLines(splitOn(text, "|"));
         for (var i = 0; i < chunks.size(); i++) {
             var c = trim(chunks[i]);
             var at = c.find(":");
@@ -175,6 +208,18 @@ module Timetable {
         return (n < 10) ? ("0" + n.toString()) : n.toString();
     }
 
+    //! 각 조각을 줄바꿈으로 한 번 더 나눠 평평하게 만든다.
+    function splitLines(chunks) {
+        var out = [];
+        for (var i = 0; i < chunks.size(); i++) {
+            var lines = splitOn(chunks[i], "\n");
+            for (var j = 0; j < lines.size(); j++) {
+                out.add(lines[j]);
+            }
+        }
+        return out;
+    }
+
     function splitOn(text, sep) {
         var out = [];
         var rest = text;
@@ -188,11 +233,17 @@ module Timetable {
         return out;
     }
 
+    //! 앞뒤 공백·줄바꿈·탭을 정리한다.
+    //! 붙여넣기에는 \r 이 섞여 들어오는 경우가 있다.
     function trim(s) {
         var a = 0;
         var b = s.length();
-        while (a < b && s.substring(a, a + 1).equals(" ")) { a++; }
-        while (b > a && s.substring(b - 1, b).equals(" ")) { b--; }
+        while (a < b && isBlank(s.substring(a, a + 1))) { a++; }
+        while (b > a && isBlank(s.substring(b - 1, b))) { b--; }
         return s.substring(a, b);
+    }
+
+    function isBlank(ch) {
+        return ch.equals(" ") || ch.equals("\r") || ch.equals("\n") || ch.equals("\t");
     }
 }

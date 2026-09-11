@@ -67,15 +67,29 @@ python3 tools/to_settings.py data/timetable.draft.json
 
 ## 지원 기기
 
-화면 계열 3개, 17종. 계열마다 시뮬레이터로 확인했다.
+원형 화면 **102종**. 계열별로는 이렇다.
 
-| 계열 | 기기 |
+| 화면 계열 | 기기 수 |
 |---|---|
-| round-260x260 | fr255, fr255m, fr955 |
-| round-218x218 | fr255s, fr255sm |
-| round-390x390 | fr165, fr165m, fr170, fr170m, fr57042mm, fr70, vivoactive5, vivoactive6, venu3s, venu441mm, venu, venud |
+| round-240x240 | 23 |
+| round-390x390 | 22 |
+| round-454x454 | 14 |
+| round-260x260 | 13 |
+| round-416x416 | 12 |
+| round-280x280 | 9 |
+| round-218x218 | 5 |
+| round-360x360 | 2 |
+| round-466x466 | 1 |
+| round-208x208 | 1 |
 
-`venu`, `venud` 는 요약을 지원하지 않는다. 앱 본체는 정상 동작한다.
+원형 계열만 넣는다. 사각형·반8각형(Instinct) 기기는 `Theme.usableWidth()` 가
+원을 전제하고 계산하므로 글자가 필요 이상으로 작아진다. 넣으려면 그 계산부터 고쳐야 한다.
+
+구형 20종(fenix 3/5, vívoactive 3, fr645, fr935 등)은 `minApiLevel 3.2.0` 을
+만족하지 못해 빠졌다.
+
+기기를 늘릴 때는 **계열마다 최소 한 종을 시뮬레이터로 확인하고** 넣는다.
+빌드가 된다고 화면이 제대로 나오는 건 아니다.
 
 ## 빌드
 

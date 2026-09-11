@@ -10,6 +10,7 @@ class TimetableView extends WatchUi.View {
     hidden var mIndex;      // 0 .. mBlocks.size()  (마지막 값 = 종료 화면)
     hidden var mConfigured;
     hidden var mShowQr;     // 온보딩 화면에서 QR 을 보고 있는가
+    hidden var mBadFormat;  // 설정은 있는데 한 줄도 못 읽었는가
     hidden var mTimer;
 
     function initialize() {
@@ -17,6 +18,7 @@ class TimetableView extends WatchUi.View {
         mBlocks = [];
         mConfigured = false;
         mShowQr = false;
+        mBadFormat = false;
         mIndex = 0;
     }
 
@@ -45,7 +47,7 @@ class TimetableView extends WatchUi.View {
     // --- 버튼 동작 -------------------------------------------------------
 
     function next() {
-        if (!mConfigured) { mShowQr = true; WatchUi.requestUpdate(); return; }
+        if (!mConfigured || mBadFormat) { mShowQr = true; WatchUi.requestUpdate(); return; }
         if (mIndex < mBlocks.size()) {
             mIndex++;
             WatchUi.requestUpdate();
@@ -53,7 +55,7 @@ class TimetableView extends WatchUi.View {
     }
 
     function prev() {
-        if (!mConfigured) { mShowQr = false; WatchUi.requestUpdate(); return; }
+        if (!mConfigured || mBadFormat) { mShowQr = false; WatchUi.requestUpdate(); return; }
         if (mIndex > 0) {
             mIndex--;
             WatchUi.requestUpdate();
@@ -67,6 +69,12 @@ class TimetableView extends WatchUi.View {
     function reload() {
         mConfigured = Timetable.isConfigured();
         mBlocks = Schedule.today();
+
+        // 설정은 들어 있는데 일주일 어느 요일에서도 한 줄을 못 읽었다면
+        // 형식이 틀린 것이다. "오늘만 수업이 없는 날" 과 구분해서 알려준다.
+        // 오늘 일정이 비었을 때만 확인한다 — 평소에는 7일치를 훑을 이유가 없다.
+        mBadFormat = mConfigured && mBlocks.size() == 0 && !Timetable.anyParsed();
+
         mShowQr = false;
         reset();
     }
@@ -83,7 +91,7 @@ class TimetableView extends WatchUi.View {
         dc.setColor(Theme.TEXT_PRIMARY, Theme.BG);
         dc.clear();
 
-        if (!mConfigured) {
+        if (!mConfigured || mBadFormat) {
             if (mShowQr) { Qr.draw(dc); } else { drawSetup(dc); }
         } else if (mIndex >= mBlocks.size()) {
             drawDone(dc);
@@ -98,9 +106,10 @@ class TimetableView extends WatchUi.View {
         var h = dc.getHeight();
         var cy = (h * Theme.CONTENT_Y_PCT) / 100;
 
-        drawLabel(dc, "SETUP", Theme.ACCENT_DONE);
+        drawLabel(dc, mBadFormat ? "CHECK" : "SETUP", Theme.ACCENT_DONE);
 
-        var title = WatchUi.loadResource(Rez.Strings.SetupTitle);
+        var title = WatchUi.loadResource(
+            mBadFormat ? Rez.Strings.BadTitle : Rez.Strings.SetupTitle);
         var l1 = WatchUi.loadResource(Rez.Strings.SetupHint);
         var l2 = WatchUi.loadResource(Rez.Strings.SetupHint2);
 

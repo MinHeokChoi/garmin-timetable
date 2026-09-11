@@ -14,6 +14,8 @@
     <string id="SetupHint">Garmin Connect app</string>
     <string id="SetupHint2">enter in settings</string>
     <!-- 요약(glance)은 본체와 다른 스코프라 별도 선언이 필요하다 -->
+    <string id="BadTitle">Check format</string>
     <string id="SetupQr">Press DOWN for QR</string>
+    <string id="BadTitleGlance" scope="glance">Check format</string>
     <string id="SetupTitleGlance" scope="glance">No timetable</string>
 </strings>

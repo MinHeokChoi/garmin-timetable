@@ -13,6 +13,7 @@ class TimetableGlanceView extends WatchUi.GlanceView {
 
     hidden var mBlocks;
     hidden var mConfigured;
+    hidden var mBadFormat;
 
     function initialize() {
         GlanceView.initialize();
@@ -21,6 +22,7 @@ class TimetableGlanceView extends WatchUi.GlanceView {
         // 블록만 캐시해도 화면이 낡지 않는다.
         mConfigured = Timetable.isConfigured();
         mBlocks = Schedule.today();
+        mBadFormat = mConfigured && mBlocks.size() == 0 && !Timetable.anyParsed();
     }
 
     function onUpdate(dc) {
@@ -31,10 +33,11 @@ class TimetableGlanceView extends WatchUi.GlanceView {
         var minutes = Schedule.nowMinutes();
         var index = Schedule.anchorIndex(blocks, minutes);
 
-        if (!mConfigured) {
+        if (!mConfigured || mBadFormat) {
             dc.setColor(Theme.ACCENT_DONE, Graphics.COLOR_TRANSPARENT);
             dc.drawText(0, dc.getHeight() / 2, Graphics.FONT_TINY,
-                WatchUi.loadResource(Rez.Strings.SetupTitleGlance),
+                WatchUi.loadResource(mBadFormat
+                    ? Rez.Strings.BadTitleGlance : Rez.Strings.SetupTitleGlance),
                 Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
             return;
         }
@@ -75,10 +78,12 @@ class TimetableGlanceView extends WatchUi.GlanceView {
         // 글자를 놓을 수 있는 시작점(x=0)은 아이콘 오른쪽이다. 그대로 믿으면
         // 오른쪽으로 넘쳐 잘린다 (218px 기기에서 실제로 잘렸다).
         //
-        // 아이콘 폭을 알아낼 API 가 없다. 실측으로 정한 값이다 —
-        // 218px 기기는 68% 에서 잘리고 50% 에서 들어갔다. 260px 기기는
-        // 그보다 여유가 있다. 두 조건을 다 만족하는 구간으로 58% 를 쓴다.
-        var avail = (w * 58) / 100;
+        // 아이콘 폭을 알아낼 API 가 없다. 실측으로 정했다 —
+        // 454px 기기 화면을 픽셀 단위로 재 보니 아이콘이 왼쪽 35.5% 를 먹고
+        // 글자는 그 뒤부터 시작한다. 즉 실제 한계는 약 64.5% 다.
+        // 218px 기기에서 68% 가 잘리고 50% 가 들어갔던 것과도 맞는다.
+        // 여유를 조금 남겨 62% 를 쓴다.
+        var avail = (w * 62) / 100;
         var titleFont = Theme.fit(dc, title, avail, Theme.RAMP_GLANCE_TITLE);
         title = Theme.ellipsize(dc, title, avail, titleFont);
         var titleH  = dc.getFontHeight(titleFont);
@@ -99,6 +104,8 @@ class TimetableGlanceView extends WatchUi.GlanceView {
         dc.drawText(0, y, titleFont, title, Graphics.TEXT_JUSTIFY_LEFT);
         y += titleH;
 
+        // 시간+강의실도 넘칠 수 있다. 강의실 이름이 길면 오른쪽이 잘린다.
+        detail = Theme.ellipsize(dc, detail, avail, Graphics.FONT_XTINY);
         dc.setColor(Theme.TEXT_SECONDARY, Graphics.COLOR_TRANSPARENT);
         dc.drawText(0, y, Graphics.FONT_XTINY, detail, Graphics.TEXT_JUSTIFY_LEFT);
     }
