@@ -115,3 +115,9 @@ footer b{color:#b9bfc5}
   .row .p{flex:1;order:4;width:auto}
 }
 .row input.unsure{border-color:var(--warn);background:#1a1408}
+
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.top h1{margin:0}
+.langs{display:flex;gap:4px}
+.lang{background:transparent;border:1px solid var(--line);color:var(--dim);border-radius:999px;padding:5px 11px;font-size:12px;cursor:pointer;font-family:inherit}
+.lang.on{background:var(--fg);color:#000;border-color:transparent;font-weight:600}

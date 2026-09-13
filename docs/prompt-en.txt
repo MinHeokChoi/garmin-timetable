@@ -1,0 +1,14 @@
+Read the timetable in the image below and output a single line in this format.
+
+Mon:09:00-09:50,Calculus,A101;10:00-11:50,Physics,B201|Tue:11:00-12:50,Biology,K502
+
+- Separate days with a pipe (|). Use Mon Tue Wed Thu Fri Sat Sun. Skip days with no classes.
+- Each class is [start-end,name,room]; separate classes with a semicolon (;).
+- Use 24-hour HH:MM. If you cannot read the room, drop it and the comma before it.
+- Merge back-to-back periods of the same class into one start-to-end entry.
+- Write class names as they appear. Do not shorten them on your own.
+- Names longer than about 8 characters wrap onto two lines on the watch.
+  Put a single space where it reads best, so the two lines come out similar in length.
+    Introduction to Algorithms -> Intro to Algorithms
+  Leave short names alone.
+- If a cell is too blurry to read, mark it ??? instead of guessing.
