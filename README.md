@@ -7,6 +7,10 @@ Garmin 시계에서 지금·다음 수업을 확인하는 앱.
 앱을 열면 현재 시각 기준으로 가장 관련 있는 수업을 보여주고, 버튼으로 앞뒤를 넘겨본다.
 요약(Glance)에서는 앱을 열지 않고도 다음 수업이 보인다.
 
+지원 언어는 한국어·영어·중국어 간체다. 문자열은 `resources/`(한국어, 기본),
+`resources-eng/`, `resources-zhs/` 에 있다. **과목명을 그 언어로 쓰려면
+시계 언어도 같아야 한다** — Connect IQ 앱은 펌웨어 폰트를 쓴다.
+
 - 화면 규칙과 코드 구조는 [DESIGN.md](DESIGN.md)
 - Store 등록에 필요한 것은 [store/CHECKLIST.md](store/CHECKLIST.md)
 - 시간표 입력 도구는 [docs/](docs/) — GitHub Pages 로 서비스한다
