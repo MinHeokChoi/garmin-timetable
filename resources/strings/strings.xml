@@ -1,21 +1,25 @@
 <strings>
     <string id="AppName">Next Class</string>
-    <string id="SettingWeek">한 번에 입력 (전체)</string>
-    <string id="SettingWeekHint">월:09:00-09:50,근로,문헌관|화:11:00-12:50,생물학,K502</string>
-    <string id="SettingMon">월요일</string>
-    <string id="SettingTue">화요일</string>
-    <string id="SettingWed">수요일</string>
-    <string id="SettingThu">목요일</string>
-    <string id="SettingFri">금요일</string>
-    <string id="SettingSat">토요일</string>
-    <string id="SettingSun">일요일</string>
-    <string id="SettingHint">09:00-09:50,과목,강의실;10:00-11:50,과목2,강의실2</string>
-    <string id="SetupTitle">시간표 없음</string>
-    <string id="SetupHint">Garmin Connect 앱</string>
-    <string id="SetupHint2">설정에서 입력</string>
+    <string id="SettingWeek">All week at once</string>
+    <string id="SettingWeekHint">Mon:09:00-09:50,Class,Room|Tue:11:00-12:50,Class,Room</string>
+    <string id="SettingMon">Monday</string>
+    <string id="SettingTue">Tuesday</string>
+    <string id="SettingWed">Wednesday</string>
+    <string id="SettingThu">Thursday</string>
+    <string id="SettingFri">Friday</string>
+    <string id="SettingSat">Saturday</string>
+    <string id="SettingSun">Sunday</string>
+    <string id="SettingHint">09:00-09:50,Class name,Room;10:00-11:50,Another class,Room</string>
+    <string id="SetupTitle">No timetable</string>
+    <string id="SetupHint">Garmin Connect app</string>
+    <string id="SetupHint2">enter in settings</string>
+    <string id="BadTitle">Check format</string>
+    <string id="SetupQr">Press DOWN for QR</string>
+    <string id="DoneEmpty">No classes today</string>
+    <string id="DoneOver">Done for today</string>
     <!-- 요약(glance)은 본체와 다른 스코프라 별도 선언이 필요하다 -->
-    <string id="BadTitle">형식 확인 필요</string>
-    <string id="SetupQr">DOWN 누르면 QR</string>
-    <string id="BadTitleGlance" scope="glance">형식 확인 필요</string>
-    <string id="SetupTitleGlance" scope="glance">시간표 없음</string>
+    <string id="BadTitleGlance" scope="glance">Check format</string>
+    <string id="SetupTitleGlance" scope="glance">No timetable</string>
+    <string id="DoneEmptyGlance" scope="glance">No classes today</string>
+    <string id="DoneOverGlance" scope="glance">Done for today</string>
 </strings>

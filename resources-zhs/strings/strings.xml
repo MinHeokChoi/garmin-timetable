@@ -1,7 +1,7 @@
 <strings>
     <string id="AppName">Next Class</string>
     <string id="SettingWeek">一次性输入（整周）</string>
-    <string id="SettingWeekHint">周一:09:00-09:50,高等数学,A101|周二:11:00-12:50,大学物理,B201</string>
+    <string id="SettingWeekHint">Mon:09:00-09:50,高等数学,A101|Tue:11:00-12:50,大学物理,B201</string>
     <string id="SettingMon">周一</string>
     <string id="SettingTue">周二</string>
     <string id="SettingWed">周三</string>
@@ -15,7 +15,11 @@
     <string id="SetupHint2">在设置中输入</string>
     <string id="BadTitle">格式有误</string>
     <string id="SetupQr">按 DOWN 看二维码</string>
+    <string id="DoneEmpty">今天没有课</string>
+    <string id="DoneOver">今天已结束</string>
     <!-- 요약(glance)은 본체와 다른 스코프라 별도 선언이 필요하다 -->
     <string id="BadTitleGlance" scope="glance">格式有误</string>
     <string id="SetupTitleGlance" scope="glance">暂无课表</string>
+    <string id="DoneEmptyGlance" scope="glance">今天没有课</string>
+    <string id="DoneOverGlance" scope="glance">今天已结束</string>
 </strings>

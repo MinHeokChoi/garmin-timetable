@@ -135,7 +135,8 @@ class TimetableView extends WatchUi.View {
     hidden function drawDone(dc) {
         var h = dc.getHeight();
         var cy = (h * Theme.CONTENT_Y_PCT) / 100;
-        var message = (mBlocks.size() == 0) ? "오늘 일정 없음" : "오늘 일정 끝";
+        var message = WatchUi.loadResource((mBlocks.size() == 0)
+            ? Rez.Strings.DoneEmpty : Rez.Strings.DoneOver);
 
         drawLabel(dc, "DONE", Theme.ACCENT_DONE);
         Theme.drawLine(dc, cy,

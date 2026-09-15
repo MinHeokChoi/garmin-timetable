@@ -50,7 +50,8 @@ class TimetableGlanceView extends WatchUi.GlanceView {
     }
 
     hidden function drawDone(dc, empty) {
-        var message = empty ? "오늘 일정 없음" : "오늘 일정 끝";
+        var message = WatchUi.loadResource(empty
+            ? Rez.Strings.DoneEmptyGlance : Rez.Strings.DoneOverGlance);
         dc.setColor(Theme.ACCENT_DONE, Graphics.COLOR_TRANSPARENT);
         dc.drawText(0, dc.getHeight() / 2, Graphics.FONT_TINY, message,
             Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
