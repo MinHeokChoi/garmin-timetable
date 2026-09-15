@@ -11,18 +11,28 @@ let activeDay = 'Mon';
 
 // 붙여넣기에서 요일을 알아보는 표. 표시 언어와 무관하게 전부 받는다 —
 // 사용자가 어떤 챗봇을 쓰든 어느 언어로 답하든 읽혀야 한다.
-const MARKERS = {};
-'월화수목금토일'.split('').forEach((c, i) => MARKERS[c] = i);
-DAY_KEYS.forEach((k, i) => MARKERS[k.toLowerCase()] = i);
-['一', '二', '三', '四', '五', '六', '日'].forEach((c, i) => {
-  MARKERS['周' + c] = i; MARKERS['週' + c] = i; MARKERS['星期' + c] = i;
-});
-MARKERS['周天'] = 6; MARKERS['星期天'] = 6;
+// Timetable.mc 의 MARKERS 와 같은 내용을 DAY_KEYS 순서(월요일부터)로 둔다.
+const MARKERS = [
+  ['월', 'mon', '月', '周一', '週一', '星期一', 'lun', 'mo', 'pon'],
+  ['화', 'tue', '火', '周二', '週二', '星期二', 'mar', 'die', 'di', 'wto', 'wt'],
+  ['수', 'wed', '水', '周三', '週三', '星期三', 'mer', 'mié', 'mie', 'mit', 'mi', 'śro', 'Śro', 'sro', 'śr', 'Śr', 'sr'],
+  ['목', 'thu', '木', '周四', '週四', '星期四', 'jeu', 'jue', 'don', 'do', 'gio', 'czw'],
+  ['금', 'fri', '金', '周五', '週五', '星期五', 'ven', 'vie', 'fre', 'fr', 'pią', 'pia', 'pt'],
+  ['토', 'sat', '土', '周六', '週六', '星期六', 'sam', 'sáb', 'sab', 'sa', 'sob'],
+  ['일', 'sun', '日', '周日', '週日', '星期日', '周天', '星期天', '週天', 'dim', 'dom', 'son', 'so', 'nie', 'nd'],
+];
 
+// 세 글자 이상은 앞부분만 맞아도 받는다 — "lun" 하나로 lundi 와 lunes 를 읽는다.
+// 두 글자(독일어 Mo/Di)는 흔한 낱말과 부딪혀서 정확히 맞을 때만.
 function dayIndexOf(token) {
-  const t = String(token).trim().replace(/요일$/, '');
-  const i = MARKERS[t];
-  return (i === undefined) ? MARKERS[t.toLowerCase()] : i;
+  const t = String(token).trim().toLowerCase().replace(/(요일|曜日|曜)$/, '');
+  for (let i = 0; i < MARKERS.length; i++) {
+    for (const m of MARKERS[i]) {
+      if (t === m) return i;
+      if (m.length >= 3 && t.startsWith(m)) return i;
+    }
+  }
+  return undefined;
 }
 
 // --- 파싱 (Timetable.mc 와 같은 규칙) --------------------------------------
@@ -183,7 +193,8 @@ function importText(raw) {
   // 고친 시간표를 다시 넣었을 때 빠진 요일이 옛날 값으로 남는다.
   const parsed = {};
   text.split('\n').forEach(line => {
-    const m = line.match(/^\s*([^:：]{1,6})\s*[:：]\s*(.*)$/);
+    // 요일 표시 자리는 넉넉히 본다 — "Donnerstag" "Miércoles" 처럼 긴 이름이 온다.
+    const m = line.match(/^\s*([^:：]{1,12})\s*[:：]\s*(.*)$/);
     if (!m) return;
     const idx = dayIndexOf(m[1]);
     if (idx === undefined) return;

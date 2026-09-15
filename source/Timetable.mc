@@ -17,6 +17,28 @@ module Timetable {
     // Gregorian day_of_week 순서: 1=일요일 ... 7=토요일
     const KEYS = [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ];
 
+    // 요일 표시. KEYS 와 같은 순서로 늘어놓는다.
+    //
+    // 설정 힌트와 웹 도구는 영문 세 글자만 내보내지만, 그것만 받으면 안 된다.
+    // 챗봇은 프롬프트를 무시하고 제 나라 말로 요일을 적어 줄 때가 있고,
+    // 손으로 적는 사람은 힌트가 아니라 자기 언어로 적는다. 읽히지 않으면
+    // 화면에는 "시간표 없음" 만 뜨고, 무엇이 틀렸는지 알 길이 없다.
+    //
+    // 비교는 소문자로 한다. 세 글자 이상은 앞부분만 맞아도 받는다 —
+    // "lun" 하나로 lundi 와 lunes 를 모두 읽는다. 두 글자(독일어 Mo/Di)는
+    // 흔한 낱말과 부딪히므로 정확히 맞을 때만 받는다.
+    const MARKERS = [
+        [ "일", "sun", "日", "周日", "週日", "星期日", "周天", "星期天", "週天", "dim", "dom", "son", "so", "nie", "nd" ],
+        [ "월", "mon", "月", "周一", "週一", "星期一", "lun", "mo", "pon" ],
+        [ "화", "tue", "火", "周二", "週二", "星期二", "mar", "die", "di", "wto", "wt" ],
+        // "Śro" "Śr" 도 넣는다 — toLower() 는 ASCII 만 내리므로 첫 글자가
+        // 다중바이트인 "Środa" 는 소문자로 안 바뀐다.
+        [ "수", "wed", "水", "周三", "週三", "星期三", "mer", "mié", "mie", "mit", "mi", "śro", "Śro", "sro", "śr", "Śr", "sr" ],
+        [ "목", "thu", "木", "周四", "週四", "星期四", "jeu", "jue", "don", "do", "gio", "czw" ],
+        [ "금", "fri", "金", "周五", "週五", "星期五", "ven", "vie", "fre", "fr", "pią", "pia", "pt" ],
+        [ "토", "sat", "土", "周六", "週六", "星期六", "sam", "sáb", "sab", "sa", "sob" ]
+    ];
+
     //! Gregorian day_of_week (1=일요일 ... 7=토요일) 에 해당하는 설정 키.
     function keyFor(dayOfWeek) {
         if (dayOfWeek >= 1 && dayOfWeek <= 7) {
@@ -45,14 +67,17 @@ module Timetable {
         return parseDay(text);
     }
 
-    //! 요일 표시(월: / Mon:)가 들어 있는가.
+    //! 요일 표시(월: / Mon: / Lun:)로 시작하는 조각이 있는가.
+    //!
+    //! 조각 맨 앞만 본다. 아무 데나 찾으면 과목명에 콜론이 들어간 것만으로
+    //! ("Chemo:Lab") 주 전체 형식으로 오인해서 그 요일이 통째로 사라진다.
     function hasDayMarker(text) {
-        var ko = [ "일", "월", "화", "수", "목", "금", "토" ];
-        for (var i = 0; i < ko.size(); i++) {
-            if (text.find(ko[i] + ":") != null) { return true; }
-        }
-        for (var j = 0; j < KEYS.size(); j++) {
-            if (text.find(KEYS[j] + ":") != null) { return true; }
+        var chunks = splitLines(splitOn(text, "|"));
+        for (var i = 0; i < chunks.size(); i++) {
+            var c = trim(chunks[i]);
+            var at = c.find(":");
+            if (at == null) { continue; }
+            if (dayIndexOf(trim(c.substring(0, at))) != null) { return true; }
         }
         return false;
     }
@@ -87,14 +112,30 @@ module Timetable {
 
     //! 요일 표시 -> Gregorian day_of_week (1=일 ... 7=토). 못 읽으면 null.
     function dayIndexOf(token) {
-        var ko = [ "일", "월", "화", "수", "목", "금", "토" ];
-        for (var i = 0; i < ko.size(); i++) {
-            if (token.equals(ko[i])) { return i + 1; }
-        }
-        for (var j = 0; j < KEYS.size(); j++) {
-            if (token.equals(KEYS[j])) { return j + 1; }
+        var t = dropDaySuffix(token.toLower());
+        for (var i = 0; i < MARKERS.size(); i++) {
+            var row = MARKERS[i];
+            for (var j = 0; j < row.size(); j++) {
+                var m = row[j];
+                if (t.equals(m)) { return i + 1; }
+                if (m.length() >= 3 && t.find(m) == 0) { return i + 1; }
+            }
         }
         return null;
+    }
+
+    //! 뒤에 붙는 "요일" "曜日" "曜" 를 떼어낸다. ("월요일" -> "월")
+    //! 설정 화면의 요일 이름이 그 형태라, 손으로 적으면 그대로 따라 적는다.
+    function dropDaySuffix(t) {
+        var tails = [ "요일", "曜日", "曜" ];
+        for (var i = 0; i < tails.size(); i++) {
+            var tail = tails[i];
+            var cut = t.length() - tail.length();
+            if (cut > 0 && t.substring(cut, t.length()).equals(tail)) {
+                return t.substring(0, cut);
+            }
+        }
+        return t;
     }
 
     //! 어느 요일이든 시간표가 하나라도 적혀 있으면 true.
