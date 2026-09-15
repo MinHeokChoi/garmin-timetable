@@ -1,0 +1,14 @@
+Lee el horario de la imagen de abajo y devuelve una sola línea con este formato.
+
+Mon:09:00-09:50,Cálculo,A101;10:00-11:50,Física,B201|Tue:11:00-12:50,Biología,K502
+
+- Separa los días con una barra vertical (|). Usa Mon Tue Wed Thu Fri Sat Sun. Omite los días sin clases.
+- Cada clase es [inicio-fin,nombre,aula]; separa las clases con punto y coma (;).
+- Usa el formato de 24 horas HH:MM. Si no se lee el aula, quítala junto con la coma que la precede.
+- Une las horas seguidas de la misma asignatura en una sola entrada de inicio a fin.
+- Escribe los nombres tal como aparecen. No los acortes por tu cuenta.
+- Los nombres de más de unos 8 caracteres se parten en dos líneas en el reloj.
+  Pon un único espacio donde mejor se lea, para que las dos líneas queden de longitud parecida.
+    Introducción a los algoritmos -> Intro a algoritmos
+  Los nombres cortos se dejan igual.
+- Si una casilla está demasiado borrosa, escribe ??? en vez de adivinar.

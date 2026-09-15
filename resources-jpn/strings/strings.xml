@@ -1,0 +1,25 @@
+<strings>
+    <string id="AppName">Next Class</string>
+    <string id="SettingWeek">1週間まとめて入力</string>
+    <string id="SettingWeekHint">Mon:09:00-09:50,数学,A101|Tue:11:00-12:50,生物学,K502</string>
+    <string id="SettingMon">月曜日</string>
+    <string id="SettingTue">火曜日</string>
+    <string id="SettingWed">水曜日</string>
+    <string id="SettingThu">木曜日</string>
+    <string id="SettingFri">金曜日</string>
+    <string id="SettingSat">土曜日</string>
+    <string id="SettingSun">日曜日</string>
+    <string id="SettingHint">09:00-09:50,科目,教室;10:00-11:50,別の科目,教室</string>
+    <string id="SetupTitle">時間割なし</string>
+    <string id="SetupHint">Garmin Connect アプリ</string>
+    <string id="SetupHint2">設定から入力</string>
+    <string id="BadTitle">形式を確認</string>
+    <string id="SetupQr">DOWN でQR表示</string>
+    <string id="DoneEmpty">今日は授業なし</string>
+    <string id="DoneOver">今日は終了</string>
+    <!-- 요약(glance)은 본체와 다른 스코프라 별도 선언이 필요하다 -->
+    <string id="BadTitleGlance" scope="glance">形式を確認</string>
+    <string id="SetupTitleGlance" scope="glance">時間割なし</string>
+    <string id="DoneEmptyGlance" scope="glance">今日は授業なし</string>
+    <string id="DoneOverGlance" scope="glance">今日は終了</string>
+</strings>

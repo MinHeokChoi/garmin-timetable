@@ -1,10 +1,10 @@
-// 화면 문구. 앱(resources/, resources-eng/, resources-zhs/)과 같은 세 언어를 맞춘다.
+// 화면 문구. 앱의 resources-* 와 같은 언어를 맞춘다.
 //
 // 요일은 두 가지가 따로 있다.
 //   labels  화면에 보여줄 이름 — 그 언어로
 //   days    출력 문자열에 넣을 표시 — 앱이 읽을 수 있는 것으로만
-// 앱이 인식하는 건 한글 한 글자(월)와 영문 세 글자(Mon) 두 가지다.
-// 중국어 "周一" 는 앱이 못 읽으므로 화면에만 쓰고 출력에는 영문을 쓴다.
+// 앱이 인식하는 표기는 여러 가지지만, 내보내는 건 한글 한 글자(월)와
+// 영문 세 글자(Mon) 둘로 좁힌다. 어느 시계에서도 확실히 읽히는 두 가지다.
 
 const I18N = {
   ko: {
@@ -94,6 +94,191 @@ const I18N = {
            order: '结束时间早于开始时间' },
     ph: { start: '09:00', end: '09:50', name: '课程名', place: '教室' },
   },
+  fr: {
+    html: 'fr', prompt: 'prompt-fr.txt', marker: 'en',
+    days: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+    labels: ['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'],
+    title: 'Mettre son emploi du temps sur la montre',
+    copyPrompt: 'Copier le prompt',
+    lead1: 'Collez-le dans un chatbot <b>avec une photo de votre emploi du temps</b>. ' +
+           'Vous obtenez une ligne — collez-la telle quelle dans Garmin Connect, ' +
+           'ou collez-la ci-dessous pour la corriger.',
+    showPrompt: 'Voir le prompt', hidePrompt: 'Masquer le prompt',
+    placeholder: 'Mon:09:00-09:50,Maths,A101|Tue:11:00-12:50,Biologie,K502',
+    where: 'Garmin Connect → Next Class → Réglages → Toute la semaine',
+    copy: 'Copier', copied: 'Copié',
+    edit: 'Vérifier et corriger', add: '+ Ajouter un cours',
+    cap: 'Aperçu sur la montre (approx.)',
+    byday: 'Saisir jour par jour',
+    bydayHint: 'Seulement si le champ unique est trop long.',
+    clear: 'Tout effacer', clearAsk: "Cela efface tout l'emploi du temps saisi.",
+    foot1: "<b>Les noms de cours ne s'affichent que si la langue de la montre correspond.</b> " +
+           'Montre → Paramètres → Système → Langue',
+    foot2: "Rien de ce que vous saisissez n'est envoyé où que ce soit.",
+    empty: 'Aucun cours ce jour-là.',
+    none: '(vide)', classes: n => `${n} cours`, chars: n => `${n} caractères`,
+    noRead: "Aucun emploi du temps lisible ici. Vérifiez le format.",
+    unsure: n => `<b>${n} élément(s) à vérifier</b> (marqués ???).`,
+    skipped: 'Ignoré',
+    why: { few: 'champs insuffisants', range: 'plage horaire illisible',
+           time: 'format horaire incorrect', name: 'nom du cours vide',
+           order: 'la fin précède le début' },
+    ph: { start: '09:00', end: '09:50', name: 'Nom du cours', place: 'Salle' },
+  },
+  de: {
+    html: 'de', prompt: 'prompt-de.txt', marker: 'en',
+    days: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+    labels: ['Mo','Di','Mi','Do','Fr','Sa','So'],
+    title: 'Den Stundenplan auf die Uhr bringen',
+    copyPrompt: 'Prompt kopieren',
+    lead1: 'Füge ihn <b>zusammen mit einem Foto deines Stundenplans</b> in einen Chatbot ein. ' +
+           'Du bekommst eine Zeile — füge sie direkt in Garmin Connect ein, ' +
+           'oder unten zum Bearbeiten.',
+    showPrompt: 'Prompt anzeigen', hidePrompt: 'Prompt ausblenden',
+    placeholder: 'Mon:09:00-09:50,Mathe,A101|Tue:11:00-12:50,Biologie,K502',
+    where: 'Garmin Connect → Next Class → Einstellungen → Ganze Woche auf einmal',
+    copy: 'Kopieren', copied: 'Kopiert',
+    edit: 'Prüfen und bearbeiten', add: '+ Kurs hinzufügen',
+    cap: 'So sieht es auf der Uhr aus (ungefähr)',
+    byday: 'Tag für Tag eingeben',
+    bydayHint: 'Nur wenn das eine Feld zu lang wird.',
+    clear: 'Alles löschen', clearAsk: 'Damit wird der ganze Stundenplan gelöscht.',
+    foot1: '<b>Kursnamen erscheinen nur, wenn die Sprache der Uhr dazu passt.</b> ' +
+           'Uhr → Einstellungen → System → Sprache',
+    foot2: 'Nichts von dem, was du eingibst, wird irgendwohin gesendet.',
+    empty: 'An diesem Tag keine Kurse.',
+    none: '(leer)', classes: n => `${n} Kurse`, chars: n => `${n} Zeichen`,
+    noRead: 'Hier war kein Stundenplan zu erkennen. Bitte das Format prüfen.',
+    unsure: n => `<b>${n} Eintrag/Einträge zu prüfen</b> (mit ??? markiert).`,
+    skipped: 'Übersprungen',
+    why: { few: 'zu wenige Felder', range: 'Zeitraum nicht lesbar',
+           time: 'falsches Zeitformat', name: 'Kursname ist leer',
+           order: 'Ende liegt vor dem Beginn' },
+    ph: { start: '09:00', end: '09:50', name: 'Kursname', place: 'Raum' },
+  },
+  es: {
+    html: 'es', prompt: 'prompt-es.txt', marker: 'en',
+    days: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+    labels: ['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'],
+    title: 'Pon tu horario en el reloj',
+    copyPrompt: 'Copiar prompt',
+    lead1: 'Pégalo en un chatbot <b>junto con una foto de tu horario</b>. ' +
+           'Obtendrás una línea: pégala tal cual en Garmin Connect, ' +
+           'o pégala abajo para corregirla.',
+    showPrompt: 'Ver prompt', hidePrompt: 'Ocultar prompt',
+    placeholder: 'Mon:09:00-09:50,Cálculo,A101|Tue:11:00-12:50,Biología,K502',
+    where: 'Garmin Connect → Next Class → Ajustes → Toda la semana',
+    copy: 'Copiar', copied: 'Copiado',
+    edit: 'Revisar y corregir', add: '+ Añadir clase',
+    cap: 'Cómo se ve en el reloj (aprox.)',
+    byday: 'Introducir día por día',
+    bydayHint: 'Solo si el campo de la semana se queda corto.',
+    clear: 'Borrar todo', clearAsk: 'Esto borra todo el horario introducido.',
+    foot1: '<b>Los nombres solo se ven si el idioma del reloj coincide.</b> ' +
+           'Reloj → Configuración → Sistema → Idioma',
+    foot2: 'Nada de lo que escribes se envía a ningún sitio.',
+    empty: 'No hay clases este día.',
+    none: '(vacío)', classes: n => `${n} clases`, chars: n => `${n} caracteres`,
+    noRead: 'No se encontró un horario legible. Revisa el formato.',
+    unsure: n => `<b>${n} elemento(s) por revisar</b> (marcados ???).`,
+    skipped: 'Omitido',
+    why: { few: 'faltan campos', range: 'no se pudo leer el rango horario',
+           time: 'formato de hora incorrecto', name: 'el nombre está vacío',
+           order: 'el fin es anterior al inicio' },
+    ph: { start: '09:00', end: '09:50', name: 'Asignatura', place: 'Aula' },
+  },
+  ja: {
+    html: 'ja', prompt: 'prompt-ja.txt', marker: 'en',
+    days: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+    labels: ['月','火','水','木','金','土','日'],
+    title: '時間割を時計に入れる',
+    copyPrompt: 'プロンプトをコピー',
+    lead1: '<b>時間割の写真といっしょに</b>チャットボットに貼り付けると、1行のテキストが返ってきます。' +
+           'そのまま Garmin Connect に入れても、直したいときは下に貼り付けてもかまいません。',
+    showPrompt: 'プロンプトを見る', hidePrompt: 'プロンプトを隠す',
+    placeholder: 'Mon:09:00-09:50,数学,A101|Tue:11:00-12:50,生物学,K502',
+    where: 'Garmin Connect → Next Class → 設定 → 1週間まとめて入力',
+    copy: 'コピー', copied: 'コピーしました',
+    edit: '確認して直す', add: '+ 授業を追加',
+    cap: '時計での見え方（目安）',
+    byday: '曜日ごとに分けて入力',
+    bydayHint: '1週間の欄が長すぎて入らないときだけ。',
+    clear: 'すべて消す', clearAsk: '入力した時間割をすべて消します。',
+    foot1: '<b>科目名を日本語にするなら、時計の言語も日本語にしてください。</b> ' +
+           '時計 → 設定 → システム → 言語',
+    foot2: '入力した内容はどこにも送信されません。',
+    empty: 'この曜日は授業がありません。',
+    none: '(空)', classes: n => `${n} 件`, chars: n => `${n} 文字`,
+    noRead: '読み取れる時間割が見つかりませんでした。形式を確認してください。',
+    unsure: n => `<b>確認が必要な項目が ${n} 件</b>あります（??? の表示）。`,
+    skipped: 'スキップした項目',
+    why: { few: '項目が足りません', range: '時間の範囲が読めません',
+           time: '時刻の形式が違います', name: '科目名が空です',
+           order: '終了が開始より前です' },
+    ph: { start: '09:00', end: '09:50', name: '科目名', place: '教室' },
+  },
+  it: {
+    html: 'it', prompt: 'prompt-it.txt', marker: 'en',
+    days: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+    labels: ['Lun','Mar','Mer','Gio','Ven','Sab','Dom'],
+    title: "Metti l'orario sull'orologio",
+    copyPrompt: 'Copia il prompt',
+    lead1: 'Incollalo in un chatbot <b>insieme a una foto del tuo orario</b>. ' +
+           'Ottieni una riga: incollala così com\'è in Garmin Connect, ' +
+           'oppure incollala qui sotto per correggerla.',
+    showPrompt: 'Mostra il prompt', hidePrompt: 'Nascondi il prompt',
+    placeholder: 'Mon:09:00-09:50,Matematica,A101|Tue:11:00-12:50,Biologia,K502',
+    where: 'Garmin Connect → Next Class → Impostazioni → Tutta la settimana',
+    copy: 'Copia', copied: 'Copiato',
+    edit: 'Controlla e correggi', add: '+ Aggiungi lezione',
+    cap: "Come appare sull'orologio (circa)",
+    byday: 'Inserisci giorno per giorno',
+    bydayHint: "Solo se il campo unico diventa troppo lungo.",
+    clear: 'Cancella tutto', clearAsk: "Questo cancella tutto l'orario inserito.",
+    foot1: "<b>I nomi delle materie si vedono solo se la lingua dell'orologio corrisponde.</b> " +
+           'Orologio → Impostazioni → Sistema → Lingua',
+    foot2: 'Nulla di ciò che scrivi viene inviato da nessuna parte.',
+    empty: 'Nessuna lezione in questo giorno.',
+    none: '(vuoto)', classes: n => `${n} lezioni`, chars: n => `${n} caratteri`,
+    noRead: 'Non ho trovato un orario leggibile. Controlla il formato.',
+    unsure: n => `<b>${n} voce/voci da controllare</b> (segnate con ???).`,
+    skipped: 'Saltato',
+    why: { few: 'campi insufficienti', range: 'intervallo di orario illeggibile',
+           time: 'formato orario errato', name: 'il nome della materia è vuoto',
+           order: 'la fine precede l\'inizio' },
+    ph: { start: '09:00', end: '09:50', name: 'Materia', place: 'Aula' },
+  },
+  pl: {
+    html: 'pl', prompt: 'prompt-pl.txt', marker: 'en',
+    days: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+    labels: ['Pon','Wt','Śr','Czw','Pt','Sob','Nd'],
+    title: 'Wgraj swój plan zajęć na zegarek',
+    copyPrompt: 'Kopiuj prompt',
+    lead1: 'Wklej go do czatbota <b>razem ze zdjęciem swojego planu zajęć</b>. ' +
+           'Dostaniesz jedną linię — wklej ją prosto do Garmin Connect ' +
+           'albo poniżej, żeby ją poprawić.',
+    showPrompt: 'Pokaż prompt', hidePrompt: 'Ukryj prompt',
+    placeholder: 'Mon:09:00-09:50,Matematyka,A101|Tue:11:00-12:50,Biologia,K502',
+    where: 'Garmin Connect → Next Class → Ustawienia → Cały tydzień naraz',
+    copy: 'Kopiuj', copied: 'Skopiowano',
+    edit: 'Sprawdź i popraw', add: '+ Dodaj zajęcia',
+    cap: 'Tak to wygląda na zegarku (w przybliżeniu)',
+    byday: 'Wpisz dzień po dniu',
+    bydayHint: 'Tylko gdy pole na cały tydzień jest za długie.',
+    clear: 'Wyczyść wszystko', clearAsk: 'To usunie cały wpisany plan zajęć.',
+    foot1: '<b>Nazwy przedmiotów pokażą się tylko wtedy, gdy język zegarka się zgadza.</b> ' +
+           'Zegarek → Ustawienia → System → Język',
+    foot2: 'Nic z tego, co wpiszesz, nigdzie nie jest wysyłane.',
+    empty: 'W tym dniu nie ma zajęć.',
+    none: '(puste)', classes: n => `${n} zajęć`, chars: n => `${n} znaków`,
+    noRead: 'Nie znaleziono czytelnego planu zajęć. Sprawdź format.',
+    unsure: n => `<b>${n} pozycji do sprawdzenia</b> (oznaczone ???).`,
+    skipped: 'Pominięto',
+    why: { few: 'za mało pól', range: 'nie udało się odczytać zakresu godzin',
+           time: 'błędny format godziny', name: 'nazwa przedmiotu jest pusta',
+           order: 'koniec jest przed początkiem' },
+    ph: { start: '09:00', end: '09:50', name: 'Przedmiot', place: 'Sala' },
+  },
 };
 
 // 저장된 선택 > 브라우저 언어 > 영어
@@ -102,8 +287,7 @@ function pickLang() {
     const saved = localStorage.getItem('lang');
     if (saved && I18N[saved]) return saved;
   } catch (e) { /* 사생활 보호 모드 등 */ }
-  const n = (navigator.language || '').toLowerCase();
-  if (n.startsWith('ko')) return 'ko';
-  if (n.startsWith('zh')) return 'zh';
-  return 'en';
+  // "fr-FR" "ja-JP" 처럼 지역이 붙어 온다. 앞 두 글자만 본다.
+  const n = (navigator.language || '').toLowerCase().slice(0, 2);
+  return I18N[n] ? n : 'en';
 }

@@ -1,0 +1,14 @@
+Odczytaj plan zajęć ze zdjęcia poniżej i zwróć dokładnie jedną linię w tym formacie.
+
+Mon:09:00-09:50,Matematyka,A101;10:00-11:50,Fizyka,B201|Tue:11:00-12:50,Biologia,K502
+
+- Dni oddzielaj pionową kreską (|). Używaj Mon Tue Wed Thu Fri Sat Sun. Dni bez zajęć pomiń.
+- Każde zajęcia to [początek-koniec,nazwa,sala]; kolejne zajęcia oddzielaj średnikiem (;).
+- Godziny w formacie 24-godzinnym HH:MM. Jeśli sali nie da się odczytać, pomiń ją razem z poprzedzającym przecinkiem.
+- Następujące po sobie godziny tego samego przedmiotu połącz w jeden wpis od początku do końca.
+- Nazwy przedmiotów zapisz tak, jak są w planie. Nie skracaj ich samodzielnie.
+- Nazwy dłuższe niż około 8 znaków łamią się na zegarku na dwie linie.
+  Wstaw jedną spację tam, gdzie czyta się najlepiej, żeby obie linie miały podobną długość.
+    Wprowadzenie do algorytmów -> Wprowadzenie algorytmy
+  Krótkie nazwy zostaw bez zmian.
+- Jeśli pole jest zbyt nieczytelne, napisz ??? zamiast zgadywać.

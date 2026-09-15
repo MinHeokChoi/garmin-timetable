@@ -21,11 +21,12 @@ Garmin Connect 앱에 로그인한 그 계정이다.
 대신 설명에 timetable, 시간표, class, schedule 을 넣어 뒀다.
 Connect IQ 검색은 **제목뿐 아니라 설명도 걸린다.**
 
-이름을 또 바꾸려면 아래 두 파일의 `AppName` 을 고치고 다시 빌드한다.
+이름을 또 바꾸려면 언어별 `strings.xml` 의 `AppName` 을 전부 고치고 다시 빌드한다.
 
 ```
-resources/strings/strings.xml       (한국어)
-resources-eng/strings/strings.xml   (영어)
+resources/strings/strings.xml       (영어, 기본)
+resources-kor/strings/strings.xml   (한국어)
+resources-zhs, -jpn, -fre, -deu, -spa
 ```
 
 ## 3단계 · 업로드
@@ -60,6 +61,17 @@ bin/timetable.iq
 |---|---|
 | 한국어 | `store/listing-ko.md` |
 | 영어 | `store/listing-en.md` |
+| 중국어 간체 | `store/listing-zhs.md` |
+| 일본어 | `store/listing-jpn.md` |
+| 프랑스어 | `store/listing-fre.md` |
+| 독일어 | `store/listing-deu.md` |
+| 스페인어 | `store/listing-spa.md` |
+| 이탈리아어 | `store/listing-ita.md` |
+| 폴란드어 | `store/listing-pol.md` |
+
+`manifest.xml` 의 `<iq:languages>` 에 선언한 언어와 이 목록을 같이 간다.
+앱은 그 언어를 지원하는데 스토어 설명은 영어만 있으면, 설치 전에 읽는 글과
+설치 후에 보는 화면의 언어가 달라진다.
 
 파일 안에 ` ``` ` 로 감싼 부분이 그대로 붙여넣을 내용이다.
 

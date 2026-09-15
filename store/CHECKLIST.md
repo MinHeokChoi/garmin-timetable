@@ -24,8 +24,8 @@ https://developer.garmin.com/connect-iq/ 에서 Garmin 계정으로 로그인.
 ## 3. 사람이 정해야 하는 것
 
 **앱 이름** — `Next Class` 로 정했다. `Timetable` 은 이미 있어서 피했다.
-바꾸려면 `resources/strings/strings.xml` 과 `resources-eng/strings/strings.xml` 의
-`AppName` 을 고치고 다시 빌드한다.
+바꾸려면 `resources/strings/strings.xml`(영어, 기본)을 비롯한 언어별
+`strings.xml` 의 `AppName` 을 모두 고치고 다시 빌드한다.
 
 **카테고리** — Connect IQ 카테고리 중 하나를 고른다. `Productivity` 계열이 맞다.
 

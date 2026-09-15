@@ -1,0 +1,14 @@
+Lies den Stundenplan im Bild unten und gib genau eine Zeile in diesem Format aus.
+
+Mon:09:00-09:50,Mathe,A101;10:00-11:50,Physik,B201|Tue:11:00-12:50,Biologie,K502
+
+- Trenne die Tage mit einem senkrechten Strich (|). Verwende Mon Tue Wed Thu Fri Sat Sun. Tage ohne Kurse weglassen.
+- Jeder Kurs ist [Beginn-Ende,Name,Raum]; trenne Kurse mit einem Semikolon (;).
+- Verwende 24-Stunden-Zeiten im Format HH:MM. Ist der Raum nicht lesbar, lass ihn samt vorangehendem Komma weg.
+- Fasse aufeinanderfolgende Stunden desselben Kurses zu einem Eintrag von Beginn bis Ende zusammen.
+- Übernimm die Kursnamen so, wie sie dastehen. Kürze sie nicht von dir aus.
+- Namen ab etwa 8 Zeichen werden auf der Uhr auf zwei Zeilen umgebrochen.
+  Setze ein einzelnes Leerzeichen an die Stelle, die sich am besten liest, damit beide Zeilen ähnlich lang werden.
+    Einführung in die Algorithmen -> Einführung Algorithmen
+  Kurze Namen bleiben unverändert.
+- Ist ein Feld zu unscharf, schreibe ??? statt zu raten.

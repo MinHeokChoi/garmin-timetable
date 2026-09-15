@@ -1,0 +1,14 @@
+Leggi l'orario delle lezioni nell'immagine qui sotto e restituisci una sola riga in questo formato.
+
+Mon:09:00-09:50,Matematica,A101;10:00-11:50,Fisica,B201|Tue:11:00-12:50,Biologia,K502
+
+- Separa i giorni con una barra verticale (|). Usa Mon Tue Wed Thu Fri Sat Sun. Salta i giorni senza lezioni.
+- Ogni lezione è [inizio-fine,nome,aula]; separa le lezioni con un punto e virgola (;).
+- Usa il formato 24 ore HH:MM. Se l'aula non si legge, toglila insieme alla virgola che la precede.
+- Unisci le ore consecutive della stessa materia in una sola voce, da inizio a fine.
+- Riporta i nomi delle materie come appaiono. Non accorciarli di tua iniziativa.
+- I nomi oltre circa 8 caratteri vanno a capo su due righe sull'orologio.
+  Metti un solo spazio dove si legge meglio, così le due righe risultano di lunghezza simile.
+    Introduzione agli algoritmi -> Intro algoritmi
+  Lascia invariati i nomi corti.
+- Se una casella è troppo sfocata, scrivi ??? invece di tirare a indovinare.

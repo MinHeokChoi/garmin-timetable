@@ -70,6 +70,20 @@ Without a space the name is split in the middle, so add one where it reads best.
 
 ## What's New
 
+### 1.0.3
+
+```
+· Six more languages: Japanese, French, German, Spanish, Italian and Polish —
+  nine in total
+· Watches set to any other language now fall back to English. They used to get
+  Korean text, which showed up as boxes or question marks
+· "No classes today" and "Done for today" appeared in Korean on every watch.
+  They are now translated
+· Day labels in your own language are accepted when you paste a timetable —
+  周一, Lun, Mo, 月, Pon and so on
+· The Chinese settings hint showed a day label the app could not read. Fixed
+```
+
 ### 1.0.1
 
 ```

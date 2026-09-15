@@ -1,0 +1,14 @@
+Lis l'emploi du temps dans l'image ci-dessous et renvoie une seule ligne dans ce format.
+
+Mon:09:00-09:50,Maths,A101;10:00-11:50,Physique,B201|Tue:11:00-12:50,Biologie,K502
+
+- Sépare les jours par une barre verticale (|). Utilise Mon Tue Wed Thu Fri Sat Sun. Ignore les jours sans cours.
+- Chaque cours s'écrit [début-fin,nom,salle] ; sépare les cours par un point-virgule (;).
+- Utilise le format 24 h HH:MM. Si la salle est illisible, supprime-la ainsi que la virgule qui la précède.
+- Fusionne les heures consécutives d'un même cours en une seule entrée du début à la fin.
+- Garde les noms de cours tels qu'ils apparaissent. Ne les abrège pas de toi-même.
+- Au-delà d'environ 8 caractères, un nom passe sur deux lignes sur la montre.
+  Mets une seule espace à l'endroit le plus lisible, pour que les deux lignes soient de longueur proche.
+    Introduction aux algorithmes -> Intro aux algorithmes
+  Laisse les noms courts tels quels.
+- Si une case est trop floue, écris ??? au lieu de deviner.

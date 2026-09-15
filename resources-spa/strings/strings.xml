@@ -1,0 +1,25 @@
+<strings>
+    <string id="AppName">Next Class</string>
+    <string id="SettingWeek">Toda la semana</string>
+    <string id="SettingWeekHint">Mon:09:00-09:50,Cálculo,A101|Tue:11:00-12:50,Biología,K502</string>
+    <string id="SettingMon">Lunes</string>
+    <string id="SettingTue">Martes</string>
+    <string id="SettingWed">Miércoles</string>
+    <string id="SettingThu">Jueves</string>
+    <string id="SettingFri">Viernes</string>
+    <string id="SettingSat">Sábado</string>
+    <string id="SettingSun">Domingo</string>
+    <string id="SettingHint">09:00-09:50,Asignatura,Aula;10:00-11:50,Otra clase,Aula</string>
+    <string id="SetupTitle">Sin horario</string>
+    <string id="SetupHint">App Garmin Connect</string>
+    <string id="SetupHint2">escribe en Ajustes</string>
+    <string id="BadTitle">Revisar formato</string>
+    <string id="SetupQr">DOWN para el QR</string>
+    <string id="DoneEmpty">Hoy sin clases</string>
+    <string id="DoneOver">Clases acabadas</string>
+    <!-- 요약(glance)은 본체와 다른 스코프라 별도 선언이 필요하다 -->
+    <string id="BadTitleGlance" scope="glance">Revisar formato</string>
+    <string id="SetupTitleGlance" scope="glance">Sin horario</string>
+    <string id="DoneEmptyGlance" scope="glance">Hoy sin clases</string>
+    <string id="DoneOverGlance" scope="glance">Clases acabadas</string>
+</strings>
