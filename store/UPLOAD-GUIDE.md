@@ -119,6 +119,60 @@ store/screenshots/  (260×260, 6장)
 
 ---
 
+## 업데이트를 올릴 때
+
+처음 등록과 흐름이 다르다. 새 바이너리를 올리고 언어별 문안을 손본다.
+
+### 1 · 묶음 빌드
+
+```bash
+monkeyc -e -f monkey.jungle -o bin/timetable.iq -y ~/.Garmin/developer_key
+```
+
+### 2 · 스토어
+
+https://apps.garmin.com → 로그인 → My Apps → Next Class → 새 버전 업로드.
+
+**버전 번호는 스토어 화면에서 직접 적는다.** `manifest.xml` 에는 버전이 없다.
+
+### 3 · 언어별 문안
+
+이미 올라가 있는 언어는 **What's New 만** 갈면 된다.
+이번에 새로 넣은 언어는 **이름·한 줄 소개·설명·키워드를 처음부터** 넣어야 한다.
+
+| 언어 | 파일 | 1.0.3 에서 할 일 |
+|---|---|---|
+| 영어 | `listing-en.md` | What's New 만 |
+| 한국어 | `listing-ko.md` | What's New 만 |
+| 중국어 간체 | `listing-zhs.md` | What's New 만 |
+| 일본어 | `listing-jpn.md` | 전부 새로 |
+| 프랑스어 | `listing-fre.md` | 전부 새로 |
+| 독일어 | `listing-deu.md` | 전부 새로 |
+| 스페인어 | `listing-spa.md` | 전부 새로 |
+| 이탈리아어 | `listing-ita.md` | 전부 새로 |
+| 폴란드어 | `listing-pol.md` | 전부 새로 |
+
+각 파일 `### 1.0.3` 아래의 ` ``` ` 블록이 What's New 에 그대로 들어간다.
+
+### 4 · 스크린샷
+
+화면 구조가 그대로면 다시 안 올려도 된다.
+
+다만 `store/screenshots/` 는 여섯 장 모두 한국어 화면이다. 스크린샷은 언어별로
+나뉘지 않고 앱 하나에 하나만 달리므로, **스토어에 오는 사람 대부분이 못 읽는
+화면을 보고 설치를 정하게 된다.** 기본 언어를 영어로 바꾼 만큼 영어 화면으로
+다시 찍는 편이 낫다.
+
+### 릴리스 전 확인
+
+- [ ] `manifest.xml` 의 `<iq:languages>`, `resources-*` 폴더, `store/listing-*` 세 목록이 같다
+- [ ] 각 언어 `SettingWeekHint` 의 요일 예시가 `Mon:` 이다 (앱이 읽을 수 있는 형태)
+- [ ] `docs/index.html` 의 `?v=` 가 이번 버전이다
+- [ ] 묶음 빌드가 전 기기에서 통과한다
+- [ ] 새 언어를 시뮬레이터에서 한 번 띄워 글자가 안 깨지고 안 넘친다
+
+---
+
 ## 승인된 뒤
 
 1. 시계에서 Connect IQ Store 로 앱을 설치한다
