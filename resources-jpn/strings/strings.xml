@@ -11,7 +11,7 @@
     <string id="SettingSun">日曜日</string>
     <string id="SettingHint">09:00-09:50,科目,教室;10:00-11:50,別の科目,教室</string>
     <string id="SetupTitle">時間割なし</string>
-    <string id="SetupHint">Garmin Connect アプリ</string>
+    <string id="SetupHint">Garmin Connect</string>
     <string id="SetupHint2">設定から入力</string>
     <string id="BadTitle">形式を確認</string>
     <string id="SetupQr">DOWN でQR表示</string>
