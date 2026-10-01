@@ -3,6 +3,9 @@ Lis l'emploi du temps dans l'image ci-dessous et renvoie une seule ligne dans ce
 Mon:09:00-09:50,Maths,A101;10:00-11:50,Physique,B201|Tue:11:00-12:50,Biologie,K502
 
 - Sépare les jours par une barre verticale (|). Utilise Mon Tue Wed Thu Fri Sat Sun. Ignore les jours sans cours.
+- Pour une alternance A/B (ou 1/2), il faut une date (YYYY-MM-DD) appartenant à la semaine A. Si ni l'image ni le dialogue ne la donnent, demande-la d'abord sans deviner. Ne renvoie la ligne qu'après la réponse.
+- Commence la réponse sur deux semaines par A=YYYY-MM-DD|, puis les cours de A, |B| et les cours de B. N'ajoute pas A= pour un emploi du temps hebdomadaire.
+    A=2026-09-28|Mon:...|Tue:...|B|Mon:...|Tue:...
 - Chaque cours s'écrit [début-fin,nom,salle] ; sépare les cours par un point-virgule (;).
 - Utilise le format 24 h HH:MM. Si la salle est illisible, supprime-la ainsi que la virgule qui la précède.
 - Fusionne les heures consécutives d'un même cours en une seule entrée du début à la fin.

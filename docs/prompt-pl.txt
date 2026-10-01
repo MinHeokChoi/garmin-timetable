@@ -3,6 +3,9 @@ Odczytaj plan zajęć ze zdjęcia poniżej i zwróć dokładnie jedną linię w 
 Mon:09:00-09:50,Matematyka,A101;10:00-11:50,Fizyka,B201|Tue:11:00-12:50,Biologia,K502
 
 - Dni oddzielaj pionową kreską (|). Używaj Mon Tue Wed Thu Fri Sat Sun. Dni bez zajęć pomiń.
+- Przy tygodniach naprzemiennych A/B (lub 1/2) potrzebna jest jedna data (YYYY-MM-DD) z tygodnia A. Jeśli nie ma jej na zdjęciu ani w rozmowie, najpierw zapytaj użytkownika; nie zgaduj. Zwróć jedną linię dopiero po odpowiedzi.
+- Odpowiedź dla planu dwutygodniowego zacznij od A=YYYY-MM-DD|, potem podaj zajęcia tygodnia A, |B| i zajęcia tygodnia B. Dla planu jednotygodniowego nie używaj A=.
+    A=2026-09-28|Mon:...|Tue:...|B|Mon:...|Tue:...
 - Każde zajęcia to [początek-koniec,nazwa,sala]; kolejne zajęcia oddzielaj średnikiem (;).
 - Godziny w formacie 24-godzinnym HH:MM. Jeśli sali nie da się odczytać, pomiń ją razem z poprzedzającym przecinkiem.
 - Następujące po sobie godziny tego samego przedmiotu połącz w jeden wpis od początku do końca.

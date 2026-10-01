@@ -3,6 +3,9 @@ Leggi l'orario delle lezioni nell'immagine qui sotto e restituisci una sola riga
 Mon:09:00-09:50,Matematica,A101;10:00-11:50,Fisica,B201|Tue:11:00-12:50,Biologia,K502
 
 - Separa i giorni con una barra verticale (|). Usa Mon Tue Wed Thu Fri Sat Sun. Salta i giorni senza lezioni.
+- Per settimane alterne A/B (o 1/2) serve una data (YYYY-MM-DD) della settimana A. Se non è nell'immagine o nella chat, chiedila prima senza indovinare. Scrivi la riga solo dopo la risposta.
+- Inizia la risposta bisettimanale con A=YYYY-MM-DD|, poi le lezioni della settimana A, |B| e quelle della B. Non usare A= per un orario di una sola settimana.
+    A=2026-09-28|Mon:...|Tue:...|B|Mon:...|Tue:...
 - Ogni lezione è [inizio-fine,nome,aula]; separa le lezioni con un punto e virgola (;).
 - Usa il formato 24 ore HH:MM. Se l'aula non si legge, toglila insieme alla virgola che la precede.
 - Unisci le ore consecutive della stessa materia in una sola voce, da inizio a fine.

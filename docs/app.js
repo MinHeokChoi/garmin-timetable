@@ -22,7 +22,7 @@ async function applyLang(code) {
   try { localStorage.setItem('lang', code); } catch (_) { /* Optional preference. */ }
 
   try {
-    const response = await fetch(t.prompt);
+    const response = await fetch(t.prompt, { cache: 'no-store' });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const loaded = (await response.text()).trim();
     if (!loaded) throw new Error('Empty prompt');

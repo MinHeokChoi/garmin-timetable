@@ -3,6 +3,9 @@ Read the timetable in the image below and output a single line in this format.
 Mon:09:00-09:50,Calculus,A101;10:00-11:50,Physics,B201|Tue:11:00-12:50,Biology,K502
 
 - Separate days with a pipe (|). Use Mon Tue Wed Thu Fri Sat Sun. Skip days with no classes.
+- For alternating Week A/B (or Week 1/2), you need one calendar date (YYYY-MM-DD) in Week A. If the image or chat does not give it, ask the user first instead of guessing. Output the single line only after they answer.
+- Start an alternating-week answer with A=YYYY-MM-DD|, then Week A classes, |B|, and Week B classes. Do not include A= for a one-week timetable.
+    A=2026-09-28|Mon:...|Tue:...|B|Mon:...|Tue:...
 - Each class is [start-end,name,room]; separate classes with a semicolon (;).
 - Use 24-hour HH:MM. If you cannot read the room, drop it and the comma before it.
 - Merge back-to-back periods of the same class into one start-to-end entry.

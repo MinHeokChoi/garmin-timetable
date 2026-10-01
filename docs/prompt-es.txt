@@ -3,6 +3,9 @@ Lee el horario de la imagen de abajo y devuelve una sola línea con este formato
 Mon:09:00-09:50,Cálculo,A101;10:00-11:50,Física,B201|Tue:11:00-12:50,Biología,K502
 
 - Separa los días con una barra vertical (|). Usa Mon Tue Wed Thu Fri Sat Sun. Omite los días sin clases.
+- Si alterna entre semanas A/B (o 1/2), necesitas una fecha (YYYY-MM-DD) de la semana A. Si no aparece en la imagen ni en el chat, pregúntala antes; no la inventes. Devuelve la línea solo después de recibirla.
+- Empieza la respuesta quincenal con A=YYYY-MM-DD|, luego las clases de la semana A, |B| y las de la semana B. No uses A= para un horario semanal.
+    A=2026-09-28|Mon:...|Tue:...|B|Mon:...|Tue:...
 - Cada clase es [inicio-fin,nombre,aula]; separa las clases con punto y coma (;).
 - Usa el formato de 24 horas HH:MM. Si no se lee el aula, quítala junto con la coma que la precede.
 - Une las horas seguidas de la misma asignatura en una sola entrada de inicio a fin.

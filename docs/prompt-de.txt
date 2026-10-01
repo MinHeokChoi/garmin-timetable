@@ -3,6 +3,9 @@ Lies den Stundenplan im Bild unten und gib genau eine Zeile in diesem Format aus
 Mon:09:00-09:50,Mathe,A101;10:00-11:50,Physik,B201|Tue:11:00-12:50,Biologie,K502
 
 - Trenne die Tage mit einem senkrechten Strich (|). Verwende Mon Tue Wed Thu Fri Sat Sun. Tage ohne Kurse weglassen.
+- Bei wechselnden Wochen A/B (oder 1/2) brauchst du ein Kalenderdatum (YYYY-MM-DD) aus Woche A. Steht es weder im Bild noch im Chat, frage zuerst nach und rate nicht. Gib die eine Zeile erst nach der Antwort aus.
+- Beginne die Antwort bei Wechselwochen mit A=YYYY-MM-DD|, danach Woche A, |B| und Woche B. Bei einem einwöchigen Plan kein A= verwenden.
+    A=2026-09-28|Mon:...|Tue:...|B|Mon:...|Tue:...
 - Jeder Kurs ist [Beginn-Ende,Name,Raum]; trenne Kurse mit einem Semikolon (;).
 - Verwende 24-Stunden-Zeiten im Format HH:MM. Ist der Raum nicht lesbar, lass ihn samt vorangehendem Komma weg.
 - Fasse aufeinanderfolgende Stunden desselben Kurses zu einem Eintrag von Beginn bis Ende zusammen.
