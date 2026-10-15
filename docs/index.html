@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#101216">
   <title>Next Class</title>
-  <link rel="stylesheet" href="style.css?v=1.2.2">
+  <link rel="stylesheet" href="style.css?v=1.4.1">
 </head>
 <body>
   <header>
@@ -28,22 +28,37 @@
       <span class="number" aria-hidden="true">1</span>
       <p data-t="step1">You need the free version of ChatGPT or Claude.</p>
     </section>
-    <section class="step">
+    <section class="step" id="prompt">
       <span class="number" aria-hidden="true">2</span>
       <div>
         <p data-t="step2">Copy the prompt and send it with a photo of your timetable in an AI chat.</p>
         <button id="copyPrompt" type="button" disabled data-t="copyPrompt">Copy prompt</button>
+        <a id="promptLink" class="text-link" href="prompt-en.txt" data-t="viewPrompt">View prompt</a>
         <p id="status" class="status" role="status" aria-live="polite"></p>
         <textarea id="promptFallback" class="fallback" readonly hidden></textarea>
       </div>
     </section>
-    <section class="step">
+    <section class="step" id="input">
       <span class="number" aria-hidden="true">3</span>
-      <p data-t="step3">Paste the reply into the timetable field in Connect IQ → Next Class → Settings, then save.</p>
+      <div>
+        <p data-t="step3">Paste the reply into the timetable field in Connect IQ → Next Class → Settings, then save. Reopen the app on your watch to check the timetable.</p>
+        <a id="openInput" class="action-link" href="https://apps.garmin.com/apps/b2f3cdb0-20f3-409f-ab2b-ff912a7a72c5" data-t="openInput">Open Next Class</a>
+        <p class="status" data-t="inputFallback">If the link opens in a browser, open Next Class → Settings in the Connect IQ app.</p>
+      </div>
+    </section>
+    <section class="watch-help">
+      <h2 data-t="watchTitle">Glance setup</h2>
+      <p data-t="watchAccess">1. Open your watch’s Glances list.
+2. Add Next Class.
+3. Add it to app Favorites too.
+App settings: hold UP or the screen while the app is open.</p>
+      <p data-t="watchAlerts">1. Open Settings → Before-class reminder.
+2. Choose 5, 10 or 15 minutes before class.
+3. Turn off Do Not Disturb.</p>
     </section>
   </main>
 
-  <script src="i18n.js?v=1.2.2"></script>
-  <script src="app.js?v=1.2.2"></script>
+  <script src="i18n.js?v=1.4.1"></script>
+  <script src="app.js?v=1.4.1"></script>
 </body>
 </html>

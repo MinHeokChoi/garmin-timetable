@@ -2,6 +2,7 @@ const langSelect = document.getElementById('langSelect');
 const copyButton = document.getElementById('copyPrompt');
 const status = document.getElementById('status');
 const fallback = document.getElementById('promptFallback');
+const promptLink = document.getElementById('promptLink');
 
 let promptText = '';
 let promptRequest = 0;
@@ -19,6 +20,7 @@ async function applyLang(code) {
   fallback.hidden = true;
   promptText = '';
   copyButton.disabled = true;
+  promptLink.href = t.prompt;
   try { localStorage.setItem('lang', code); } catch (_) { /* Optional preference. */ }
 
   try {
