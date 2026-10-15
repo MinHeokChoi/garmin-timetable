@@ -88,6 +88,5 @@ function pickLang() {
     const saved = localStorage.getItem('lang');
     if (saved && I18N[saved]) return saved;
   } catch (_) { /* Storage can be unavailable in private mode. */ }
-  const browserLang = (navigator.language || '').toLowerCase().slice(0, 2);
-  return I18N[browserLang] ? browserLang : 'en';
+  return 'en';
 }
